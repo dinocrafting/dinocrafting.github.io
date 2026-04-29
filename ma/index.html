@@ -4,161 +4,128 @@ lang: ma
 title: الرئيسية
 ---
 
-<section class="py-20 text-center">
-  <h1 class="text-5xl md:text-7xl font-bold mb-6">
-    <span x-show="!arabiziMode">{{ site.data.locales[page.lang].hero.title }}</span>
-    <span x-show="arabiziMode">{{ site.data.locales[page.lang].hero.latin.title }}</span>
-  </h1>
-  <p class="text-xl text-gray-500 dark:text-gray-400 mb-10 max-w-2xl mx-auto">
-    <span x-show="!arabiziMode">{{ site.data.locales[page.lang].hero.subtitle }}</span>
-    <span x-show="arabiziMode">{{ site.data.locales[page.lang].hero.latin.subtitle }}</span>
-  </p>
-  <div class="flex justify-center gap-4">
-    <a href="#" class="btn-primary">
-      <span x-show="!arabiziMode">{{ site.data.locales[page.lang].hero.cta }}</span>
-      <span x-show="arabiziMode">{{ site.data.locales[page.lang].hero.latin.cta }}</span>
-    </a>
-  </div>
-</section>
+<div x-data="{ 
+    search: '',
+    ram: '4gb',
+    mods: [
+      { title: 'FlowInventory', desc: 'أفضل مود لتنظيم الشنطة تلقائياً بذكاء. كيرتب ليك كلشي بلا صداع.', version: '1.21.x', url: '/mods/flowinventory/', img: 'https://media.forgecdn.net/avatars/591/10/637841050000000000.png', category: 'Utility', stars: 5 },
+      { title: 'FPS Booster', desc: 'محرك خاص لزيادة سرعة اللعبة في الأجهزة الضعيفة بزاف.', version: '1.20.x', url: '#', img: 'https://media.forgecdn.net/avatars/591/10/637841050000000000.png', category: 'Performance', stars: 4 },
+      { title: 'AutoSwap', desc: 'تبديل الأدوات تلقائياً حسب نوع البلوك لي خدام فيه.', version: '1.21.x', url: '#', img: 'https://media.forgecdn.net/avatars/591/10/637841050000000000.png', category: 'Utility', stars: 5 },
+      { title: 'Shadow Shaders', desc: 'شيدرز خفيف بزاف مصاوب للأجهزة اللي فيها 2 جيجا رام.', version: '1.21.x', url: '#', img: 'https://media.forgecdn.net/avatars/591/10/637841050000000000.png', category: 'Visuals', stars: 4 }
+    ]
+  }">
+  
+  <!-- HERO SECTION -->
+  <section class="relative py-20 px-6 overflow-hidden rounded-[4rem] bg-gradient-to-br from-moroccangreen/20 via-black to-black border border-white/10 mb-20">
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-moroccangreen/10 blur-[120px] rounded-full"></div>
+    <div class="relative z-10 text-center lg:text-right">
+      <h1 class="text-6xl lg:text-8xl font-black text-white mb-6 tracking-tighter leading-none">مرحبا بكم في عالم <br><span class="text-moroccangreen uppercase italic">Dino Crafting</span></h1>
+      <p class="text-xl lg:text-2xl text-gray-400 mb-10 max-w-2xl ml-auto">أقوى المودات، السيرفرات، والشروحات الحصرية لمجتمع ماينكرافت المغربي.</p>
+      
+      <!-- SEARCH BAR (Shadow Style) -->
+      <div class="max-w-xl ml-auto relative group">
+        <input type="text" x-model="search" placeholder="إبحث عن مود... (مثلا: FlowInventory)" 
+               class="w-full px-8 py-5 bg-black/60 backdrop-blur-2xl border-2 border-white/10 rounded-2xl text-white outline-none focus:border-moroccangreen transition-all shadow-2xl">
+        <div class="absolute right-6 top-1/2 -translate-y-1/2 text-gray-500 group-hover:text-moroccangreen">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+        </div>
+      </div>
+    </div>
+  </section>
 
-{% include ad-slot.html zone="header" %}
-
-<section class="grid md:grid-cols-3 gap-8 py-12">
-  <div class="card">
-    <h3 class="text-xl font-bold mb-4">آخر المودات</h3>
-    <p class="text-gray-500 text-sm mb-6">اكتشف أحسن المودات اللي مخففة للأجهزة الضعيفة.</p>
-    <a href="#" class="text-moroccangreen font-bold text-sm">شوف كولشي &rarr;</a>
-  </div>
-  <div class="card">
-    <h3 class="text-xl font-bold mb-4">شروحات</h3>
-    <p class="text-gray-500 text-sm mb-6">تعلم كيفاش تزيد FPS ديالك وتبني مباني واعرة.</p>
-    <a href="#" class="text-moroccangreen font-bold text-sm">شوف كولشي &rarr;</a>
-  </div>
-  <div class="card">
-    <h3 class="text-xl font-bold mb-4">سيرفرات</h3>
-    <p class="text-gray-500 text-sm mb-6">دخل لأحسن سيرفرات ماينكرافت فالمغرب والعالم العربي.</p>
-    <a href="#" class="text-moroccangreen font-bold text-sm">شوف كولشي &rarr;</a>
-  </div>
-</section>
-
-<!-- Premium Low-PC Optimizer Dashboard -->
-<section class="relative py-20 px-6 my-20 overflow-hidden" x-data="{ ram: '4gb' }">
-  <!-- Background Accents -->
-  <div class="absolute top-0 left-1/4 w-96 h-96 bg-moroccangreen/10 blur-[120px] rounded-full -z-10"></div>
-  <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-moroccanred/10 blur-[120px] rounded-full -z-10"></div>
-
-  <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight bg-gradient-to-r from-moroccangreen via-white to-moroccangreen bg-clip-text text-transparent">
-        <span x-show="!arabiziMode">تحسين الأداء الذكي</span>
-        <span x-show="arabiziMode">Optimization Dyalk</span>
-      </h2>
-      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-        <span x-show="!arabiziMode">ختار شحال عندك ديال الـ RAM وشوف السحر كيطبق على المودات ديالك</span>
-        <span x-show="arabiziMode">Khtar RAM dyalk o chouf kifach t-boosti l-performance</span>
-      </p>
+  <!-- MOD GRID -->
+  <section class="py-12">
+    <div class="flex justify-between items-end mb-12">
+      <div>
+        <h2 class="text-3xl font-black text-white mb-2 italic">💎 المودات الحصرية</h2>
+        <div class="h-1.5 w-20 bg-moroccangreen rounded-full"></div>
+      </div>
+      <span class="text-gray-500 text-xs font-bold uppercase tracking-widest" x-text="mods.filter(m => m.title.toLowerCase().includes(search.toLowerCase())).length + ' MODS FOUND'"></span>
     </div>
 
-    <!-- Dashboard Container -->
-    <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-12 shadow-2xl shadow-black/50">
-      
-      <!-- Selection Bar -->
-      <div class="flex flex-wrap justify-center gap-3 mb-12">
-        <template x-for="r in ['2GB', '4GB', '8GB', '16GB+']">
-          <button @click="ram = r.toLowerCase()" 
-                  class="relative group px-8 py-3 rounded-2xl font-bold transition-all duration-300 border overflow-hidden"
-                  :class="ram === r.toLowerCase() ? 'border-moroccangreen text-white shadow-[0_0_20px_rgba(0,98,51,0.4)]' : 'border-white/10 text-gray-500 hover:border-white/30'">
-            <div class="absolute inset-0 bg-moroccangreen opacity-0 group-hover:opacity-10 transition-opacity" :class="ram === r.toLowerCase() ? 'opacity-100' : ''"></div>
-            <span class="relative z-10" x-text="r"></span>
-          </button>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <template x-for="mod in mods.filter(m => m.title.toLowerCase().includes(search.toLowerCase()))" :key="mod.title">
+        <div class="group relative bg-white/5 rounded-[2.5rem] border border-white/10 p-6 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-500">
+          <!-- Mod Thumbnail -->
+          <div class="relative aspect-video rounded-3xl overflow-hidden mb-6 border border-white/5 shadow-2xl">
+            <img :src="mod.img" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute top-4 left-4 px-3 py-1 bg-black/80 backdrop-blur-md rounded-full text-[10px] font-black text-moroccangreen border border-moroccangreen/20" x-text="mod.version"></div>
+          </div>
+          
+          <!-- Content -->
+          <h3 class="text-2xl font-black text-white mb-3 group-hover:text-moroccangreen transition-colors" x-text="mod.title"></h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-6 h-10 overflow-hidden" x-text="mod.desc"></p>
+          
+          <div class="flex items-center justify-between pt-6 border-t border-white/5">
+            <div class="flex gap-1">
+              <template x-for="i in mod.stars">
+                <svg class="w-3 h-3 text-moroccangreen" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </template>
+            </div>
+            <a :href="mod.url" class="px-6 py-2 bg-moroccangreen text-white text-xs font-black rounded-xl hover:bg-moroccangreen/80 transition-all shadow-lg shadow-moroccangreen/20">تحميل</a>
+          </div>
+        </div>
+      </template>
+    </div>
+  </section>
+
+  <!-- CREATOR SPOTLIGHT -->
+  <section class="mt-40 p-12 lg:p-20 rounded-[4rem] bg-gradient-to-br from-red-600/10 via-black to-black border border-white/5 relative overflow-hidden group">
+    <div class="absolute -top-20 -right-20 w-80 h-80 bg-red-600/5 blur-[120px] rounded-full"></div>
+    <div class="relative z-10 flex flex-col lg:flex-row items-center gap-16">
+      <div class="flex-1 text-center lg:text-right">
+        <div class="inline-flex items-center gap-3 px-4 py-2 bg-red-600/20 text-red-500 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-8">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+          Founder & Developer
+        </div>
+        <h2 class="text-6xl font-black text-white mb-8 tracking-tighter">معكم <span class="text-red-600 uppercase italic">Dino Crafting</span></h2>
+        <p class="text-xl text-gray-400 mb-12 leading-relaxed max-w-2xl ml-auto">أنا هنا باش نحسن تجربة اللعب ديالكم فماينكرافت. كنصاوب مودات، شروحات، وبزاف ديال الحوايج لي غاتعجبكم. تابعوني على يوتيوب باش تعرفو كولشي جديد!</p>
+        <a href="https://www.youtube.com/@Dinocrafting" target="_blank" class="inline-flex items-center gap-4 px-12 py-6 bg-red-600 text-white font-black rounded-[2.5rem] hover:bg-red-700 transition-all shadow-2xl shadow-red-600/30">
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93 0.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-0.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          إشترك في القناة
+        </a>
+      </div>
+      <div class="w-full lg:w-1/3 flex justify-center">
+        <div class="relative">
+          <div class="absolute -inset-10 bg-gradient-to-tr from-red-600 to-moroccangreen rounded-full opacity-20 blur-[80px]"></div>
+          <img src="/assets/images/avatar.png" class="relative w-80 h-80 rounded-[3.5rem] object-cover border-8 border-white/5 shadow-2xl hover:scale-105 transition-transform duration-700">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SMART OPTIMIZER (Integrated) -->
+  <section class="mt-40 mb-20 bg-white/5 rounded-[4rem] p-12 border border-white/10">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-black text-white mb-4 italic uppercase">Smart Optimizer</h2>
+      <p class="text-gray-500 mb-8">ختار الرام ديالك باش تشوف أفضل الإعدادات</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <template x-for="r in ['2gb', '4gb', '8gb', '16gb+']">
+          <button @click="ram = r" 
+                  class="px-8 py-4 rounded-2xl font-black transition-all border-2 uppercase tracking-widest"
+                  :class="ram === r ? 'bg-moroccangreen border-moroccangreen text-white shadow-xl shadow-moroccangreen/40' : 'bg-black/40 border-white/5 text-gray-500 hover:border-white/20'"
+                  x-text="r"></button>
         </template>
       </div>
-
-      <!-- Featured Mod Section -->
-      <section class="mt-32">
-        <div class="flex justify-between items-end mb-12">
-          <div>
-            <h2 class="text-3xl font-black text-white mb-2">💎 أحسن المودات</h2>
-            <p class="text-gray-500">مودات حصرية من صنع Dinocrafting</p>
-          </div>
-          <a href="/mods/" class="text-moroccangreen font-bold hover:underline">عرض الكل</a>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="p-10 rounded-[3rem] bg-black/40 border border-white/5">
+        <h3 class="text-2xl font-black text-white mb-4">FPS Engine</h3>
+        <p class="text-gray-400 mb-8" x-text="ram === '2gb' ? 'Maximum speed for low-end PC.' : 'Balanced optimization for ' + ram"></p>
+        <div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+          <div class="h-full bg-moroccangreen transition-all duration-1000" :style="ram === '2gb' ? 'width: 100%' : 'width: 70%'"></div>
         </div>
-        
-        <div class="grid lg:grid-cols-1 gap-8">
-          <div class="group relative bg-white/5 rounded-[2.5rem] border border-white/10 p-8 flex flex-col md:flex-row gap-12 items-center hover:bg-white/[0.07] transition-all">
-            <div class="w-48 h-48 rounded-3xl overflow-hidden shadow-2xl group-hover:scale-105 transition-transform duration-500">
-              <img src="https://media.forgecdn.net/avatars/591/10/637841050000000000.png" class="w-full h-full object-cover">
-            </div>
-            <div class="flex-1 text-center md:text-right">
-              <span class="px-4 py-1 bg-moroccangreen/20 text-moroccangreen rounded-full text-[10px] font-black uppercase tracking-widest mb-4 inline-block">جديد</span>
-              <h3 class="text-4xl font-black text-white mb-4">FlowInventory</h3>
-              <p class="text-gray-400 mb-8 max-w-xl ml-auto">أفضل مود لتنظيم الشنطة (Inventory) تلقائياً. المود كيرتب ليك كلشي بذكاء باش تركز فقط على اللعب.</p>
-              <div class="flex flex-wrap justify-center md:justify-end gap-4">
-                <a href="/mods/flowinventory/" class="px-8 py-4 bg-white text-black font-black rounded-2xl hover:bg-gray-200 transition-all">إكتشف المزيد</a>
-                <a href="https://www.curseforge.com/minecraft/mc-mods/flowinventory" target="_blank" class="px-8 py-4 bg-moroccangreen text-white font-black rounded-2xl shadow-lg shadow-moroccangreen/20 hover:bg-moroccangreen/80 transition-all">تحميل مباشر</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- YouTube Section -->
-      <section class="mt-32 p-12 rounded-[3rem] bg-gradient-to-br from-red-600/20 to-black border border-white/5 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-red-600/10 blur-[100px] rounded-full"></div>
-        <div class="relative z-10 flex flex-col lg:flex-row items-center gap-12">
-          <div class="flex-1 text-center lg:text-right">
-            <h2 class="text-5xl font-black text-white mb-6">تابعني على يوتيوب</h2>
-            <p class="text-xl text-gray-300 mb-10">شروحات، مودات، ومغامرات يومية في عالم ماينكرافت. لا تنسى الإشتراك باش يوصلك الجديد!</p>
-            <a href="https://www.youtube.com/@Dinocrafting" target="_blank" class="inline-flex items-center gap-4 px-10 py-5 bg-red-600 text-white font-black rounded-2xl hover:bg-red-700 transition-all shadow-xl shadow-red-600/20">
-              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93 0.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-0.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-              Dinocrafting YouTube
-            </a>
-          </div>
-          <div class="w-full lg:w-1/3 flex justify-center">
-            <div class="relative group">
-              <div class="absolute -inset-4 bg-gradient-to-r from-red-600 to-moroccangreen rounded-[2rem] opacity-30 blur group-hover:opacity-50 transition-opacity"></div>
-              <img src="https://yt3.googleusercontent.com/ytc/AIdro_n_Yw3s_tZ8R5-yU_Zf-B_V7N_X9_B9_Y9_Y9_Y9=s176-c-k-c0x00ffffff-no-rj" class="relative w-48 h-48 rounded-[2rem] border-4 border-white/10 shadow-2xl">
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Results Grid -->
-      <div class="grid md:grid-cols-2 gap-6 mt-12" dir="ltr">
-        <!-- Card 1 -->
-        <div class="group relative p-8 rounded-3xl bg-black/40 border border-white/5 hover:border-moroccangreen/50 transition-all duration-500">
-          <div class="flex justify-between items-start mb-6">
-            <div class="p-3 bg-moroccangreen/20 rounded-2xl text-moroccangreen">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-            </div>
-            <span class="text-[10px] font-bold px-2 py-1 bg-moroccangreen/20 text-moroccangreen rounded uppercase tracking-widest">Recommended</span>
-          </div>
-          <h3 class="text-xl font-bold mb-2">FPS Booster Engine</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-6" x-text="ram === '2gb' ? 'Maximum compression mode. Disables all unnecessary particle effects for 2GB systems.' : 'High-performance engine. Optimizes memory allocation for ' + ram + ' systems.'"></p>
-          <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-            <div class="h-full bg-moroccangreen shadow-[0_0_10px_#006233] transition-all duration-1000" :style="ram === '2gb' ? 'width: 95%' : ram === '4gb' ? 'width: 75%' : 'width: 45%'"></div>
-          </div>
-          <div class="mt-2 text-[10px] text-gray-600 uppercase font-bold">Optimization Impact</div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="group relative p-8 rounded-3xl bg-black/40 border border-white/5 hover:border-moroccanred/50 transition-all duration-500">
-          <div class="flex justify-between items-start mb-6">
-            <div class="p-3 bg-moroccanred/20 rounded-2xl text-moroccanred">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-            </div>
-            <span class="text-[10px] font-bold px-2 py-1 bg-moroccanred/20 text-moroccanred rounded uppercase tracking-widest" x-text="ram === '2gb' ? 'Not Advised' : 'Stable'"></span>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Atlas Shaders (Lite)</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-6" x-text="ram === '2gb' ? 'Warning: Shaders will likely crash 2GB RAM. Use Dino-Internal instead.' : 'Perfect balance between visuals and FPS for your ' + ram + ' setup.'"></p>
-          <div class="flex items-center gap-2">
-            <template x-for="i in 5">
-              <div class="w-full h-1.5 rounded-full transition-all duration-500" :class="i <= (ram === '2gb' ? 1 : ram === '4gb' ? 3 : 5) ? 'bg-moroccanred shadow-[0_0_10px_#C1272D]' : 'bg-white/5'"></div>
-            </template>
-          </div>
-          <div class="mt-2 text-[10px] text-gray-600 uppercase font-bold">Visual Fidelity</div>
+      </div>
+      <div class="p-10 rounded-[3rem] bg-black/40 border border-white/5">
+        <h3 class="text-2xl font-black text-white mb-4">Visual Fidelity</h3>
+        <p class="text-gray-400 mb-8" x-text="ram === '2gb' ? 'Lite visuals enabled.' : 'Ultra shaders for ' + ram"></p>
+        <div class="flex gap-2">
+          <template x-for="i in 5">
+            <div class="w-full h-2 rounded-full" :class="i <= (ram === '2gb' ? 1 : 4) ? 'bg-moroccangreen' : 'bg-white/5'"></div>
+          </template>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>

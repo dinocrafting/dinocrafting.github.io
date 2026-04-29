@@ -1,4 +1,4 @@
-title: Dinocrafting
+title: Dino Crafting
 email: contact@dinocrafting.com
 description: >-
   The official hub for Dinocrafting - Moroccan Minecraft YouTuber.
@@ -15,7 +15,7 @@ analytics:
   google_id: "" # Paste your G-XXXXXXXXXX ID here
 
 # Branding
-logo: "/assets/images/dinocrafting_logo.png"
+logo: "/assets/images/avatarHead2.png"
 
 # Collections
 collections:

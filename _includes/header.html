@@ -1,18 +1,31 @@
 <header class="sticky top-0 z-50 bg-white/80 dark:bg-darkbg/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
   <div class="container mx-auto px-4 h-16 flex items-center justify-between">
-    <!-- Logo -->
-    <a href="{{ '/' | relative_url }}" class="flex items-center gap-2">
-      <span class="text-2xl font-bold bg-gradient-to-r from-moroccangreen to-moroccanred bg-clip-text text-transparent">Dinocrafting</span>
+    <!-- Logo & Name -->
+    <a href="/{{ lang }}/" class="flex items-center gap-3 group">
+      <div class="w-10 h-10 rounded-xl overflow-hidden border-2 border-moroccangreen/20 group-hover:border-moroccangreen transition-all transform group-hover:scale-110 duration-300">
+        <img src="{{ site.logo | relative_url }}" alt="Dino Crafting" class="w-full h-full object-cover">
+      </div>
+      <div class="flex flex-col">
+        <span class="text-lg font-black text-white tracking-tighter leading-none uppercase">Dino Crafting</span>
+        <span class="text-[8px] text-moroccangreen font-bold tracking-[0.2em] uppercase">Minecraft Hub</span>
+      </div>
     </a>
 
     <!-- Nav -->
     <nav class="hidden md:flex items-center gap-6">
       {% assign nav = site.data.locales[lang].nav %}
-      <a href="{{ '/' | append: lang | relative_url }}" class="hover:text-moroccangreen transition-colors">{{ nav.home }}</a>
-      <a href="#" class="hover:text-moroccangreen transition-colors">{{ nav.mods }}</a>
-      <a href="#" class="hover:text-moroccangreen transition-colors">{{ nav.tutorials }}</a>
-      <a href="#" class="hover:text-moroccangreen transition-colors">{{ nav.servers }}</a>
-    </nav>
+      <a href="/{{ lang }}/" class="text-sm font-bold text-gray-400 hover:text-white transition-colors relative group">
+        {{ nav.home }}
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-moroccangreen transition-all group-hover:w-full"></span>
+      </a>
+      <a href="/mods/" class="text-sm font-bold text-gray-400 hover:text-white transition-colors relative group">
+        {{ nav.mods }}
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-moroccangreen transition-all group-hover:w-full"></span>
+      </a>
+      <a href="#" class="text-sm font-bold text-gray-400 hover:text-white transition-colors relative group">
+        {{ nav.tutorials }}
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-moroccangreen transition-all group-hover:w-full"></span>
+      </a>
 
     <!-- Actions -->
     <div class="flex items-center gap-4">
