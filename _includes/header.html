@@ -2,16 +2,19 @@
         x-data="{ 
           level: localStorage.getItem('dinoLevel') || 1,
           exp: localStorage.getItem('dinoExp') || 0,
+          visits: localStorage.getItem('dinoVisits') || 0,
           neededExp: 100,
           init() {
             // Gain 10 EXP every time they visit a page
             this.exp = parseInt(this.exp) + 10;
+            this.visits = parseInt(this.visits) + 1;
             if (this.exp >= this.neededExp) {
               this.level++;
               this.exp = 0;
             }
             localStorage.setItem('dinoLevel', this.level);
             localStorage.setItem('dinoExp', this.exp);
+            localStorage.setItem('dinoVisits', this.visits);
           }
         }">
   <div class="container mx-auto px-4 h-16 flex items-center justify-between">
