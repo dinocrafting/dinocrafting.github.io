@@ -1,0 +1,17 @@
+{% if site.ad_network %}
+<div class="ad-slot my-8 flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-900 rounded-xl border-2 border-dashed border-gray-200 dark:border-gray-800 min-h-[100px]" data-zone="{{ include.zone }}">
+  <!-- Placeholder / Ad Content -->
+  <div class="text-xs text-gray-400 mb-2 uppercase tracking-widest">Advertisement</div>
+  
+  <div id="ad-{{ include.zone }}-container" class="w-full flex justify-center">
+    <!-- Ad Script would be injected here by main.js based on zone -->
+    <div class="animate-pulse flex space-x-4">
+      <div class="bg-gray-200 dark:bg-gray-800 h-24 w-full rounded"></div>
+    </div>
+  </div>
+
+  <p class="mt-4 text-[10px] text-gray-400 text-center px-4">
+    {{ site.data.locales[lang].ads.adblock_message }}
+  </p>
+</div>
+{% endif %}

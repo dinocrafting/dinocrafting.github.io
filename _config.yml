@@ -1,0 +1,27 @@
+title: Dinocrafting
+email: contact@dinocrafting.com
+description: >-
+  The official hub for Dinocrafting - Moroccan Minecraft YouTuber.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://dinocrafting.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+
+# Languages
+default_lang: ma
+languages:
+  - ma
+  - en
+  - fr
+  - ar
+  - es
+
+# Monetization Configuration
+ad_network: "propellerads"
+ad_placement_header: "11111"
+ad_placement_sidebar: "22222"
+ad_placement_incontent: "33333"
+
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag

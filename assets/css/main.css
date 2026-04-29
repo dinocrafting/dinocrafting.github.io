@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-moroccangreen hover:bg-moroccangreen/90 text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-moroccangreen/20;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-darkcard rounded-2xl border border-gray-100 dark:border-gray-800 p-6 transition-all hover:shadow-xl hover:-translate-y-1;
+  }
+}

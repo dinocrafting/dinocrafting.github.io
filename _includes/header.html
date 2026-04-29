@@ -1,0 +1,45 @@
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-darkbg/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+  <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="{{ '/' | relative_url }}" class="flex items-center gap-2">
+      <span class="text-2xl font-bold bg-gradient-to-r from-moroccangreen to-moroccanred bg-clip-text text-transparent">Dinocrafting</span>
+    </a>
+
+    <!-- Nav -->
+    <nav class="hidden md:flex items-center gap-6">
+      {% assign nav = site.data.locales[lang].nav %}
+      <a href="{{ '/' | append: lang | relative_url }}" class="hover:text-moroccangreen transition-colors">{{ nav.home }}</a>
+      <a href="#" class="hover:text-moroccangreen transition-colors">{{ nav.mods }}</a>
+      <a href="#" class="hover:text-moroccangreen transition-colors">{{ nav.tutorials }}</a>
+      <a href="#" class="hover:text-moroccangreen transition-colors">{{ nav.servers }}</a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="flex items-center gap-4">
+      <!-- Dark Mode Toggle -->
+      <button @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+        <template x-if="!darkMode">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+        </template>
+        <template x-if="darkMode">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+        </template>
+      </button>
+
+      <!-- Language Switcher -->
+      <div class="relative" x-data="{ open: false }">
+        <button @click="open = !open" class="flex items-center gap-1 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors uppercase font-bold text-sm">
+          {{ lang }}
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+        </button>
+        <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-32 bg-white dark:bg-darkcard border border-gray-200 dark:border-gray-800 rounded-lg shadow-xl overflow-hidden py-1">
+          {% for l in site.languages %}
+            <a href="/{{ l }}/" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors uppercase {% if l == lang %}text-moroccangreen font-bold{% endif %}">
+              {{ l }}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,21 @@
+nav:
+  home: "Home"
+  mods: "Mods"
+  tutorials: "Tutorials"
+  servers: "Servers"
+  community: "Community"
+  blog: "Blog"
+  about: "About"
+
+hero:
+  title: "Welcome to Dinocrafting Hub"
+  subtitle: "The best mods, tutorials, and servers for the Minecraft community."
+  cta: "Explore Mods"
+  
+ads:
+  adblock_message: "We keep this content free with ads. If you'd like to support us, please disable your ad blocker 🙏"
+
+footer:
+  rights: "All rights reserved."
+  privacy: "Privacy Policy"
+  terms: "Terms of Service"

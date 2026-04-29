@@ -1,0 +1,39 @@
+---
+layout: default
+lang: ma
+title: الرئيسية
+---
+
+<section class="py-20 text-center">
+  <h1 class="text-5xl md:text-7xl font-bold mb-6">
+    {{ site.data.locales[page.lang].hero.title }}
+  </h1>
+  <p class="text-xl text-gray-500 dark:text-gray-400 mb-10 max-w-2xl mx-auto">
+    {{ site.data.locales[page.lang].hero.subtitle }}
+  </p>
+  <div class="flex justify-center gap-4">
+    <a href="#" class="btn-primary">
+      {{ site.data.locales[page.lang].hero.cta }}
+    </a>
+  </div>
+</section>
+
+{% include ad-slot.html zone="header" %}
+
+<section class="grid md:grid-cols-3 gap-8 py-12">
+  <div class="card">
+    <h3 class="text-xl font-bold mb-4">آخر المودات</h3>
+    <p class="text-gray-500 text-sm mb-6">اكتشف أحسن المودات اللي مخففة للأجهزة الضعيفة.</p>
+    <a href="#" class="text-moroccangreen font-bold text-sm">شوف كولشي &rarr;</a>
+  </div>
+  <div class="card">
+    <h3 class="text-xl font-bold mb-4">شروحات</h3>
+    <p class="text-gray-500 text-sm mb-6">تعلم كيفاش تزيد FPS ديالك وتبني مباني واعرة.</p>
+    <a href="#" class="text-moroccangreen font-bold text-sm">شوف كولشي &rarr;</a>
+  </div>
+  <div class="card">
+    <h3 class="text-xl font-bold mb-4">سيرفرات</h3>
+    <p class="text-gray-500 text-sm mb-6">دخل لأحسن سيرفرات ماينكرافت فالمغرب والعالم العربي.</p>
+    <a href="#" class="text-moroccangreen font-bold text-sm">شوف كولشي &rarr;</a>
+  </div>
+</section>

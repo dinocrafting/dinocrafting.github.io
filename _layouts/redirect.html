@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <meta http-equiv="refresh" content="3; url={{ page.target }}">
+  <link rel="canonical" href="{{ page.target }}">
+  <!-- Tailwind for the interstitial page -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-lightbg dark:bg-darkbg text-center flex items-center justify-center min-h-screen font-sans" x-data="{ countdown: 3 }">
+  <div class="card max-w-md mx-auto p-12">
+    <div class="mb-6">
+      <div class="w-16 h-16 bg-moroccangreen/10 rounded-full flex items-center justify-center mx-auto text-moroccangreen mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+      </div>
+      <h2 class="text-2xl font-bold mb-2">Thanks for using Dinocrafting Links! 🎮</h2>
+      <p class="text-gray-500 text-sm">You are being redirected to your destination in <span x-text="countdown">3</span> seconds...</p>
+    </div>
+
+    <!-- Ad placeholder in redirect -->
+    <div class="my-6 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-dashed border-gray-200 dark:border-gray-800 text-[10px] text-gray-400">
+      ADVERTISEMENT
+    </div>
+
+    <a href="{{ page.target }}" class="text-moroccangreen font-bold hover:underline">Click here if not redirected automatically</a>
+  </div>
+
+  <script>
+    const timer = setInterval(() => {
+      const el = document.querySelector('[x-data]');
+      const data = Alpine.$data(el);
+      if (data.countdown > 0) {
+        data.countdown--;
+      } else {
+        clearInterval(timer);
+        window.location.href = "{{ page.target }}";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

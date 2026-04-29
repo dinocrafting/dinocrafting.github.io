@@ -1,0 +1,21 @@
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Node
+node_modules/
+package-lock.json
+
+# Ruby
+vendor/
+.bundle/
+Gemfile.lock
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Deployment
+assets/css/style.css
