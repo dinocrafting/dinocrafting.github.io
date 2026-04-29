@@ -2,7 +2,7 @@ title: Dinocrafting
 email: contact@dinocrafting.com
 description: >-
   The official hub for Dinocrafting - Moroccan Minecraft YouTuber.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/dinocrafting" # the subpath of your site, e.g. /blog
 url: "https://dinocrafting.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Languages
