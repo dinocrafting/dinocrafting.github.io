@@ -26,11 +26,23 @@
 </head>
 <body class="bg-lightbg dark:bg-darkbg text-gray-900 dark:text-gray-100 transition-colors duration-300 font-sans {% if lang == 'ar' or lang == 'ma' %}font-arabic{% endif %}">
 
+  <!-- Top Ad Banner -->
+  <div class="bg-gray-100 dark:bg-black/40 py-2 border-b border-gray-200 dark:border-gray-800 flex justify-center overflow-hidden">
+    {% include ad-slot.html zone="header" %}
+  </div>
+
   {% include header.html %}
 
   <main class="container mx-auto px-4 py-8">
     {{ content }}
   </main>
+
+  <!-- Sticky Bottom Anchor Ad -->
+  <div class="fixed bottom-0 left-0 w-full z-50 flex justify-center pointer-events-none">
+    <div class="pointer-events-auto w-full max-w-2xl bg-white/10 backdrop-blur-xl border-t border-white/10 shadow-2xl">
+      {% include ad-slot.html zone="footer" %}
+    </div>
+  </div>
 
   {% include footer.html %}
 

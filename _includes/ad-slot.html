@@ -1,17 +1,11 @@
 {% if site.ad_network %}
-<div class="ad-slot my-8 flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-900 rounded-xl border-2 border-dashed border-gray-200 dark:border-gray-800 min-h-[100px]" data-zone="{{ include.zone }}">
-  <!-- Placeholder / Ad Content -->
-  <div class="text-xs text-gray-400 mb-2 uppercase tracking-widest">Advertisement</div>
+<div class="ad-slot my-6 flex flex-col items-center justify-center p-2 bg-black/5 dark:bg-white/5 rounded-2xl border border-white/5 transition-all hover:border-moroccangreen/20" data-zone="{{ include.zone }}">
+  <!-- Label -->
+  <div class="text-[8px] text-gray-500 mb-1 uppercase tracking-[0.2em] font-bold">Recommended for you</div>
   
-  <div id="ad-{{ include.zone }}-container" class="w-full flex justify-center">
-    <!-- Ad Script would be injected here by main.js based on zone -->
-    <div class="animate-pulse flex space-x-4">
-      <div class="bg-gray-200 dark:bg-gray-800 h-24 w-full rounded"></div>
-    </div>
+  <div id="ad-{{ include.zone }}-container" class="w-full flex justify-center min-h-[50px]">
+    <!-- Monetag will automatically inject the ad here if the script is active -->
+    <div class="animate-pulse bg-gray-200/20 dark:bg-gray-800/20 h-full w-full rounded-lg"></div>
   </div>
-
-  <p class="mt-4 text-[10px] text-gray-400 text-center px-4">
-    {{ site.data.locales[lang].ads.adblock_message }}
-  </p>
 </div>
 {% endif %}
