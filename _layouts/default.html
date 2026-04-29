@@ -26,12 +26,14 @@
 </head>
 <body class="bg-lightbg dark:bg-darkbg text-gray-900 dark:text-gray-100 transition-colors duration-300 font-sans {% if lang == 'ar' or lang == 'ma' %}font-arabic{% endif %}">
 
-  <!-- Top Ad Banner -->
-  <div class="bg-gray-100 dark:bg-black/40 py-2 border-b border-gray-200 dark:border-gray-800 flex justify-center overflow-hidden">
-    {% include ad-slot.html zone="header" %}
-  </div>
-
   {% include header.html %}
+
+  <!-- TOP LEADERBOARD AD -->
+  <div class="container mx-auto px-4 mt-4 flex justify-center">
+    <div class="w-full max-w-4xl bg-black/40 rounded-xl overflow-hidden border border-white/5 shadow-lg min-h-[90px] flex items-center justify-center">
+      {% include ad-slot.html zone="leaderboard_top" %}
+    </div>
+  </div>
 
   <main class="container mx-auto px-4 py-8">
     {{ content }}
