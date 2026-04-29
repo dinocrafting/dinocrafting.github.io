@@ -1,13 +1,34 @@
-<header class="sticky top-0 z-50 bg-white/80 dark:bg-darkbg/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-darkbg/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800"
+        x-data="{ 
+          level: localStorage.getItem('dinoLevel') || 1,
+          exp: localStorage.getItem('dinoExp') || 0,
+          neededExp: 100,
+          init() {
+            // Gain 10 EXP every time they visit a page
+            this.exp = parseInt(this.exp) + 10;
+            if (this.exp >= this.neededExp) {
+              this.level++;
+              this.exp = 0;
+            }
+            localStorage.setItem('dinoLevel', this.level);
+            localStorage.setItem('dinoExp', this.exp);
+          }
+        }">
   <div class="container mx-auto px-4 h-16 flex items-center justify-between">
-    <!-- Logo & Name -->
+    <!-- Logo & Level -->
     <a href="/{{ lang }}/" class="flex items-center gap-3 group">
-      <div class="w-10 h-10 rounded-xl overflow-hidden border-2 border-moroccangreen/20 group-hover:border-moroccangreen transition-all transform group-hover:scale-110 duration-300">
-        <img src="{{ site.logo | relative_url }}" alt="Dino Crafting" class="w-full h-full object-cover">
+      <div class="w-10 h-10 flex-shrink-0 rounded-xl overflow-hidden border-2 border-moroccangreen/20 group-hover:border-moroccangreen transition-all">
+        <img src="{{ site.logo | relative_url }}" class="w-full h-full object-cover">
       </div>
       <div class="flex flex-col">
-        <span class="text-lg font-black text-white tracking-tighter leading-none uppercase">Dino Crafting</span>
-        <span class="text-[8px] text-moroccangreen font-bold tracking-[0.2em] uppercase">Minecraft Hub</span>
+        <div class="flex items-center gap-2">
+          <span class="text-sm font-black text-white leading-none uppercase">Dino Crafting</span>
+          <span class="px-1.5 py-0.5 bg-moroccangreen text-white text-[8px] font-black rounded-md" x-text="'LVL ' + level"></span>
+        </div>
+        <!-- Progress Bar -->
+        <div class="w-24 h-1 bg-white/5 rounded-full mt-1 overflow-hidden">
+          <div class="h-full bg-moroccangreen transition-all duration-1000" :style="'width: ' + (exp/neededExp * 100) + '%'"></div>
+        </div>
       </div>
     </a>
 
