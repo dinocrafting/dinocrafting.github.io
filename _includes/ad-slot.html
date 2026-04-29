@@ -1,4 +1,5 @@
 {% if site.ad_network %}
+<div x-data="{ hideAds: new URLSearchParams(window.location.search).has('noads') }" x-show="!hideAds">
 <div class="ad-slot my-6 flex flex-col items-center justify-center p-2 bg-black/5 dark:bg-white/5 rounded-2xl border border-white/5 transition-all hover:border-moroccangreen/20" data-zone="{{ include.zone }}">
   <!-- Label -->
   <div class="text-[8px] text-gray-500 mb-1 uppercase tracking-[0.2em] font-bold">Recommended for you</div>
@@ -12,5 +13,6 @@
     <a href="mailto:support@dinocrafting.com?subject=Report Ad on {{ include.zone }}" class="text-[7px] text-gray-500 hover:text-moroccanred transition-colors uppercase font-bold tracking-widest">Report Inappropriate Ad</a>
     <span class="text-[7px] text-gray-500 uppercase font-bold tracking-widest">Ad ID: {{ include.zone }}</span>
   </div>
+</div>
 </div>
 {% endif %}
