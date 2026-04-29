@@ -16,6 +16,16 @@
 
     <!-- Actions -->
     <div class="flex items-center gap-4">
+      <!-- Darija Script Toggle (Only for MA) -->
+      {% if lang == 'ma' %}
+      <button @click="arabiziMode = !arabiziMode; localStorage.setItem('arabiziMode', arabiziMode)" 
+              class="px-3 py-1 text-[10px] font-bold rounded-full border border-moroccangreen text-moroccangreen hover:bg-moroccangreen hover:text-white transition-all uppercase tracking-tighter"
+              :class="arabiziMode ? 'bg-moroccangreen text-white' : ''">
+        <span x-show="!arabiziMode">عربي</span>
+        <span x-show="arabiziMode">Arabizi</span>
+      </button>
+      {% endif %}
+
       <!-- Dark Mode Toggle -->
       <button @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
         <template x-if="!darkMode">

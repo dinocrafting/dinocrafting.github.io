@@ -6,14 +6,17 @@ title: الرئيسية
 
 <section class="py-20 text-center">
   <h1 class="text-5xl md:text-7xl font-bold mb-6">
-    {{ site.data.locales[page.lang].hero.title }}
+    <span x-show="!arabiziMode">{{ site.data.locales[page.lang].hero.title }}</span>
+    <span x-show="arabiziMode">{{ site.data.locales[page.lang].hero.latin.title }}</span>
   </h1>
   <p class="text-xl text-gray-500 dark:text-gray-400 mb-10 max-w-2xl mx-auto">
-    {{ site.data.locales[page.lang].hero.subtitle }}
+    <span x-show="!arabiziMode">{{ site.data.locales[page.lang].hero.subtitle }}</span>
+    <span x-show="arabiziMode">{{ site.data.locales[page.lang].hero.latin.subtitle }}</span>
   </p>
   <div class="flex justify-center gap-4">
     <a href="#" class="btn-primary">
-      {{ site.data.locales[page.lang].hero.cta }}
+      <span x-show="!arabiziMode">{{ site.data.locales[page.lang].hero.cta }}</span>
+      <span x-show="arabiziMode">{{ site.data.locales[page.lang].hero.latin.cta }}</span>
     </a>
   </div>
 </section>
@@ -35,5 +38,46 @@ title: الرئيسية
     <h3 class="text-xl font-bold mb-4">سيرفرات</h3>
     <p class="text-gray-500 text-sm mb-6">دخل لأحسن سيرفرات ماينكرافت فالمغرب والعالم العربي.</p>
     <a href="#" class="text-moroccangreen font-bold text-sm">شوف كولشي &rarr;</a>
+  </div>
+</section>
+
+<!-- Low-PC Optimizer Widget -->
+<section class="py-16 px-6 bg-gradient-to-br from-moroccangreen/5 to-moroccanred/5 rounded-3xl border border-gray-200 dark:border-gray-800 my-12" x-data="{ ram: '4gb' }">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-4">
+      <span x-show="!arabiziMode">أحسن مودات لجهازك</span>
+      <span x-show="arabiziMode">Ahssan mods l'PC dyalk</span>
+    </h2>
+    <p class="text-gray-500 mb-8">
+      <span x-show="!arabiziMode">ختار شحال عندك ديال RAM وغادي نعطيوك المودات اللي مناسبين ليك</span>
+      <span x-show="arabiziMode">Khtar ch-hal andek dyal RAM o ghadi n-atyouk l-mods li mnasbin lik</span>
+    </p>
+
+    <div class="flex justify-center flex-wrap gap-4 mb-12">
+      <template x-for="r in ['2gb', '4gb', '8gb', '16gb+']">
+        <button @click="ram = r" 
+                class="px-6 py-2 rounded-xl border-2 transition-all font-bold"
+                :class="ram === r ? 'border-moroccangreen bg-moroccangreen text-white shadow-lg' : 'border-gray-200 dark:border-gray-800 hover:border-moroccangreen dark:bg-darkcard'">
+          <span x-text="r"></span>
+        </button>
+      </template>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-4 text-left" dir="ltr">
+      <div class="p-6 bg-white dark:bg-darkcard rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-3 h-3 rounded-full bg-moroccangreen shadow-glow"></div>
+          <span class="font-bold">FPS Booster v2.0</span>
+        </div>
+        <p class="text-sm text-gray-500" x-text="ram === '2gb' ? 'Essential for 2GB RAM. Disables heavy textures.' : 'Optimized for ' + ram + '. Smooth gameplay.'"></p>
+      </div>
+      <div class="p-6 bg-white dark:bg-darkcard rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-3 h-3 rounded-full bg-moroccanred shadow-glow"></div>
+          <span class="font-bold">Dino Shaders (Lite)</span>
+        </div>
+        <p class="text-sm text-gray-500" x-text="ram === '2gb' ? 'Not recommended for 2GB. Use Internal instead.' : 'Works great on ' + ram + '. Cinematic feel.'"></p>
+      </div>
+    </div>
   </div>
 </section>

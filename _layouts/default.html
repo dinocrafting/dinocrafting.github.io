@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% assign lang = page.lang | default: site.default_lang %}
 {% assign locale = site.data.locales[lang] %}
-<html lang="{{ lang }}" {% if lang == 'ar' or lang == 'ma' %}dir="rtl"{% else %}dir="ltr"{% endif %} x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" :class="{ 'dark': darkMode }">
+<html lang="{{ lang }}" {% if lang == 'ar' or lang == 'ma' %}dir="rtl"{% else %}dir="ltr"{% endif %} x-data="{ darkMode: localStorage.getItem('darkMode') === 'true', arabiziMode: localStorage.getItem('arabiziMode') === 'true' }" :class="{ 'dark': darkMode }">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

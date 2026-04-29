@@ -6,14 +6,28 @@ nav:
   community: "المجتمع"
   blog: "مدونة"
   about: "عن القناة"
+  latin:
+    home: "Home"
+    mods: "Mods"
+    tutorials: "Tutorials"
+    servers: "Servers"
+    community: "Community"
+    blog: "Blog"
+    about: "About"
 
 hero:
   title: "مرحبا بكم فموقع Dinocrafting"
   subtitle: "أحسن المودات، الشروحات والسيرفرات لمجتمع ماينكرافت."
   cta: "اكتشف المودات"
+  latin:
+    title: "Marhba bikom f'site n'Dinocrafting"
+    subtitle: "Ahssan l-mods, l-tutoiyat o l-servers dyal Minecraft."
+    cta: "Chouf l-mods"
 
 ads:
   adblock_message: "حنا كنقدرو نكملو المحتوى ديالنا غير بلا إعلانات، لكن إذا بغيتي تدعمنا، عطل ad blocker 🙏"
+  latin:
+    adblock_message: "Hna kankadro nkemlo l-mohtawa dyalna ghi bla i3lanat, walakin ila bghiti t-supportina, hiyed ad blocker 🙏"
 
 footer:
   rights: "جميع الحقوق محفوظة."
