@@ -5,6 +5,30 @@ description: >-
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://dinocrafting.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
+# Social Media & YouTube
+youtube:
+  channel_id: "@Dinocrafting"
+  url: "https://www.youtube.com/@Dinocrafting"
+
+# Analytics (Google Analytics 4)
+analytics:
+  google_id: "" # Paste your G-XXXXXXXXXX ID here
+
+# Branding
+logo: "/assets/images/dinocrafting_logo.png"
+
+# Collections
+collections:
+  mods:
+    output: true
+    permalink: /mods/:path/
+  tutorials:
+    output: true
+    permalink: /tutorials/:path/
+  servers:
+    output: true
+    permalink: /servers/:path/
+
 # Languages
 default_lang: ma
 languages:

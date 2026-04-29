@@ -74,8 +74,57 @@ title: الرئيسية
         </template>
       </div>
 
+      <!-- Featured Mod Section -->
+      <section class="mt-32">
+        <div class="flex justify-between items-end mb-12">
+          <div>
+            <h2 class="text-3xl font-black text-white mb-2">💎 أحسن المودات</h2>
+            <p class="text-gray-500">مودات حصرية من صنع Dinocrafting</p>
+          </div>
+          <a href="/mods/" class="text-moroccangreen font-bold hover:underline">عرض الكل</a>
+        </div>
+        
+        <div class="grid lg:grid-cols-1 gap-8">
+          <div class="group relative bg-white/5 rounded-[2.5rem] border border-white/10 p-8 flex flex-col md:flex-row gap-12 items-center hover:bg-white/[0.07] transition-all">
+            <div class="w-48 h-48 rounded-3xl overflow-hidden shadow-2xl group-hover:scale-105 transition-transform duration-500">
+              <img src="https://media.forgecdn.net/avatars/591/10/637841050000000000.png" class="w-full h-full object-cover">
+            </div>
+            <div class="flex-1 text-center md:text-right">
+              <span class="px-4 py-1 bg-moroccangreen/20 text-moroccangreen rounded-full text-[10px] font-black uppercase tracking-widest mb-4 inline-block">جديد</span>
+              <h3 class="text-4xl font-black text-white mb-4">FlowInventory</h3>
+              <p class="text-gray-400 mb-8 max-w-xl ml-auto">أفضل مود لتنظيم الشنطة (Inventory) تلقائياً. المود كيرتب ليك كلشي بذكاء باش تركز فقط على اللعب.</p>
+              <div class="flex flex-wrap justify-center md:justify-end gap-4">
+                <a href="/mods/flowinventory/" class="px-8 py-4 bg-white text-black font-black rounded-2xl hover:bg-gray-200 transition-all">إكتشف المزيد</a>
+                <a href="https://www.curseforge.com/minecraft/mc-mods/flowinventory" target="_blank" class="px-8 py-4 bg-moroccangreen text-white font-black rounded-2xl shadow-lg shadow-moroccangreen/20 hover:bg-moroccangreen/80 transition-all">تحميل مباشر</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- YouTube Section -->
+      <section class="mt-32 p-12 rounded-[3rem] bg-gradient-to-br from-red-600/20 to-black border border-white/5 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-red-600/10 blur-[100px] rounded-full"></div>
+        <div class="relative z-10 flex flex-col lg:flex-row items-center gap-12">
+          <div class="flex-1 text-center lg:text-right">
+            <h2 class="text-5xl font-black text-white mb-6">تابعني على يوتيوب</h2>
+            <p class="text-xl text-gray-300 mb-10">شروحات، مودات، ومغامرات يومية في عالم ماينكرافت. لا تنسى الإشتراك باش يوصلك الجديد!</p>
+            <a href="https://www.youtube.com/@Dinocrafting" target="_blank" class="inline-flex items-center gap-4 px-10 py-5 bg-red-600 text-white font-black rounded-2xl hover:bg-red-700 transition-all shadow-xl shadow-red-600/20">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93 0.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-0.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              Dinocrafting YouTube
+            </a>
+          </div>
+          <div class="w-full lg:w-1/3 flex justify-center">
+            <div class="relative group">
+              <div class="absolute -inset-4 bg-gradient-to-r from-red-600 to-moroccangreen rounded-[2rem] opacity-30 blur group-hover:opacity-50 transition-opacity"></div>
+              <img src="https://yt3.googleusercontent.com/ytc/AIdro_n_Yw3s_tZ8R5-yU_Zf-B_V7N_X9_B9_Y9_Y9_Y9=s176-c-k-c0x00ffffff-no-rj" class="relative w-48 h-48 rounded-[2rem] border-4 border-white/10 shadow-2xl">
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Results Grid -->
-      <div class="grid md:grid-cols-2 gap-6" dir="ltr">
+      <div class="grid md:grid-cols-2 gap-6 mt-12" dir="ltr">
         <!-- Card 1 -->
         <div class="group relative p-8 rounded-3xl bg-black/40 border border-white/5 hover:border-moroccangreen/50 transition-all duration-500">
           <div class="flex justify-between items-start mb-6">

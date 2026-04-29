@@ -19,6 +19,17 @@
   <!-- Alpine JS -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   
+  <!-- Google Analytics -->
+  {% if site.analytics.google_id != "" %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google_id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.analytics.google_id }}');
+  </script>
+  {% endif %}
+
   <!-- Ad Provider Script -->
   {% if site.monetization.provider == "monetag" %}
     {{ site.monetization.monetag.multitag_script }}
