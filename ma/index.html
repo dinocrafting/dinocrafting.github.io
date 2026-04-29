@@ -41,42 +41,74 @@ title: الرئيسية
   </div>
 </section>
 
-<!-- Low-PC Optimizer Widget -->
-<section class="py-16 px-6 bg-gradient-to-br from-moroccangreen/5 to-moroccanred/5 rounded-3xl border border-gray-200 dark:border-gray-800 my-12" x-data="{ ram: '4gb' }">
-  <div class="max-w-4xl mx-auto text-center">
-    <h2 class="text-3xl font-bold mb-4">
-      <span x-show="!arabiziMode">أحسن مودات لجهازك</span>
-      <span x-show="arabiziMode">Ahssan mods l'PC dyalk</span>
-    </h2>
-    <p class="text-gray-500 mb-8">
-      <span x-show="!arabiziMode">ختار شحال عندك ديال RAM وغادي نعطيوك المودات اللي مناسبين ليك</span>
-      <span x-show="arabiziMode">Khtar ch-hal andek dyal RAM o ghadi n-atyouk l-mods li mnasbin lik</span>
-    </p>
+<!-- Premium Low-PC Optimizer Dashboard -->
+<section class="relative py-20 px-6 my-20 overflow-hidden" x-data="{ ram: '4gb' }">
+  <!-- Background Accents -->
+  <div class="absolute top-0 left-1/4 w-96 h-96 bg-moroccangreen/10 blur-[120px] rounded-full -z-10"></div>
+  <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-moroccanred/10 blur-[120px] rounded-full -z-10"></div>
 
-    <div class="flex justify-center flex-wrap gap-4 mb-12">
-      <template x-for="r in ['2gb', '4gb', '8gb', '16gb+']">
-        <button @click="ram = r" 
-                class="px-6 py-2 rounded-xl border-2 transition-all font-bold"
-                :class="ram === r ? 'border-moroccangreen bg-moroccangreen text-white shadow-lg' : 'border-gray-200 dark:border-gray-800 hover:border-moroccangreen dark:bg-darkcard'">
-          <span x-text="r"></span>
-        </button>
-      </template>
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight bg-gradient-to-r from-moroccangreen via-white to-moroccangreen bg-clip-text text-transparent">
+        <span x-show="!arabiziMode">تحسين الأداء الذكي</span>
+        <span x-show="arabiziMode">Optimization Dyalk</span>
+      </h2>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+        <span x-show="!arabiziMode">ختار شحال عندك ديال الـ RAM وشوف السحر كيطبق على المودات ديالك</span>
+        <span x-show="arabiziMode">Khtar RAM dyalk o chouf kifach t-boosti l-performance</span>
+      </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-4 text-left" dir="ltr">
-      <div class="p-6 bg-white dark:bg-darkcard rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
-        <div class="flex items-center gap-3 mb-2">
-          <div class="w-3 h-3 rounded-full bg-moroccangreen shadow-glow"></div>
-          <span class="font-bold">FPS Booster v2.0</span>
-        </div>
-        <p class="text-sm text-gray-500" x-text="ram === '2gb' ? 'Essential for 2GB RAM. Disables heavy textures.' : 'Optimized for ' + ram + '. Smooth gameplay.'"></p>
+    <!-- Dashboard Container -->
+    <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-12 shadow-2xl shadow-black/50">
+      
+      <!-- Selection Bar -->
+      <div class="flex flex-wrap justify-center gap-3 mb-12">
+        <template x-for="r in ['2GB', '4GB', '8GB', '16GB+']">
+          <button @click="ram = r.toLowerCase()" 
+                  class="relative group px-8 py-3 rounded-2xl font-bold transition-all duration-300 border overflow-hidden"
+                  :class="ram === r.toLowerCase() ? 'border-moroccangreen text-white shadow-[0_0_20px_rgba(0,98,51,0.4)]' : 'border-white/10 text-gray-500 hover:border-white/30'">
+            <div class="absolute inset-0 bg-moroccangreen opacity-0 group-hover:opacity-10 transition-opacity" :class="ram === r.toLowerCase() ? 'opacity-100' : ''"></div>
+            <span class="relative z-10" x-text="r"></span>
+          </button>
+        </template>
       </div>
-      <div class="p-6 bg-white dark:bg-darkcard rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
-        <div class="flex items-center gap-3 mb-2">
-          <div class="w-3 h-3 rounded-full bg-moroccanred shadow-glow"></div>
-          <span class="font-bold">Dino Shaders (Lite)</span>
+
+      <!-- Results Grid -->
+      <div class="grid md:grid-cols-2 gap-6" dir="ltr">
+        <!-- Card 1 -->
+        <div class="group relative p-8 rounded-3xl bg-black/40 border border-white/5 hover:border-moroccangreen/50 transition-all duration-500">
+          <div class="flex justify-between items-start mb-6">
+            <div class="p-3 bg-moroccangreen/20 rounded-2xl text-moroccangreen">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            </div>
+            <span class="text-[10px] font-bold px-2 py-1 bg-moroccangreen/20 text-moroccangreen rounded uppercase tracking-widest">Recommended</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">FPS Booster Engine</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-6" x-text="ram === '2gb' ? 'Maximum compression mode. Disables all unnecessary particle effects for 2GB systems.' : 'High-performance engine. Optimizes memory allocation for ' + ram + ' systems.'"></p>
+          <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+            <div class="h-full bg-moroccangreen shadow-[0_0_10px_#006233] transition-all duration-1000" :style="ram === '2gb' ? 'width: 95%' : ram === '4gb' ? 'width: 75%' : 'width: 45%'"></div>
+          </div>
+          <div class="mt-2 text-[10px] text-gray-600 uppercase font-bold">Optimization Impact</div>
         </div>
-        <p class="text-sm text-gray-500" x-text="ram === '2gb' ? 'Not recommended for 2GB. Use Internal instead.' : 'Works great on ' + ram + '. Cinematic feel.'"></p>
+
+        <!-- Card 2 -->
+        <div class="group relative p-8 rounded-3xl bg-black/40 border border-white/5 hover:border-moroccanred/50 transition-all duration-500">
+          <div class="flex justify-between items-start mb-6">
+            <div class="p-3 bg-moroccanred/20 rounded-2xl text-moroccanred">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            </div>
+            <span class="text-[10px] font-bold px-2 py-1 bg-moroccanred/20 text-moroccanred rounded uppercase tracking-widest" x-text="ram === '2gb' ? 'Not Advised' : 'Stable'"></span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Atlas Shaders (Lite)</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-6" x-text="ram === '2gb' ? 'Warning: Shaders will likely crash 2GB RAM. Use Dino-Internal instead.' : 'Perfect balance between visuals and FPS for your ' + ram + ' setup.'"></p>
+          <div class="flex items-center gap-2">
+            <template x-for="i in 5">
+              <div class="w-full h-1.5 rounded-full transition-all duration-500" :class="i <= (ram === '2gb' ? 1 : ram === '4gb' ? 3 : 5) ? 'bg-moroccanred shadow-[0_0_10px_#C1272D]' : 'bg-white/5'"></div>
+            </template>
+          </div>
+          <div class="mt-2 text-[10px] text-gray-600 uppercase font-bold">Visual Fidelity</div>
+        </div>
       </div>
     </div>
   </div>
