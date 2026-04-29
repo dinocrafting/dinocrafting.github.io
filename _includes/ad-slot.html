@@ -7,5 +7,10 @@
     <!-- Monetag will automatically inject the ad here if the script is active -->
     <div class="animate-pulse bg-gray-200/20 dark:bg-gray-800/20 h-full w-full rounded-lg"></div>
   </div>
+  
+  <div class="mt-2 flex justify-between w-full px-2">
+    <a href="mailto:support@dinocrafting.com?subject=Report Ad on {{ include.zone }}" class="text-[7px] text-gray-500 hover:text-moroccanred transition-colors uppercase font-bold tracking-widest">Report Inappropriate Ad</a>
+    <span class="text-[7px] text-gray-500 uppercase font-bold tracking-widest">Ad ID: {{ include.zone }}</span>
+  </div>
 </div>
 {% endif %}
