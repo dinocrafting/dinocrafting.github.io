@@ -16,13 +16,12 @@ title: الرئيسية
   <section class="relative py-20 px-6 overflow-hidden rounded-[4rem] bg-gradient-to-br from-moroccangreen/20 via-black to-black border border-white/10 mb-20">
     <div class="absolute -top-24 -right-24 w-96 h-96 bg-moroccangreen/10 blur-[120px] rounded-full"></div>
     <div class="relative z-10 flex flex-col lg:flex-row items-center gap-12">
-      <!-- Left Image (rr (2).png) - MASSIVE -->
-      <div class="w-full lg:w-1/2 hidden lg:flex justify-center relative">
-        <div class="absolute inset-0 bg-moroccangreen/5 blur-[100px] rounded-full animate-pulse"></div>
-        <img src="/assets/images/rr (2).png" class="w-full max-w-2xl h-auto object-contain animate-float drop-shadow-[0_0_60px_rgba(0,98,51,0.5)] scale-125 z-10">
+      <!-- LEFT IMAGE (Massive) -->
+      <div class="w-full lg:w-1/2 flex justify-center order-1 lg:order-1">
+        <img src="/assets/images/rr (2).png" class="w-full max-w-2xl h-auto object-contain animate-float drop-shadow-[0_0_80px_rgba(0,98,51,0.5)] scale-125">
       </div>
-      <!-- Right Content -->
-      <div class="flex-1 text-center lg:text-right">
+      <!-- RIGHT CONTENT -->
+      <div class="flex-1 text-center lg:text-right order-2 lg:order-2">
         <h1 class="text-6xl lg:text-8xl font-black text-white mb-6 tracking-tighter leading-none">مرحبا بكم في عالم <br><span class="text-moroccangreen uppercase italic">Dino Crafting</span></h1>
         <p class="text-xl lg:text-2xl text-gray-400 mb-10 max-w-2xl ml-auto">أقوى المودات، السيرفرات، والشروحات الحصرية لمجتمع ماينكرافت المغربي.</p>
         
@@ -263,9 +262,9 @@ title: الرئيسية
       <div class="w-full lg:w-1/3 flex justify-center">
         <div class="relative w-80 h-96 lg:h-[450px] bg-black/40 rounded-[3rem] border border-white/10 overflow-hidden shadow-2xl" 
              x-init="
-               const checkSkinView = setInterval(() => {
-                 if (typeof skinview3d !== 'undefined') {
-                   clearInterval(checkSkinView);
+               const script = document.createElement('script');
+               script.src = 'https://cdn.jsdelivr.net/npm/skinview3d@3.0.0/bundles/skinview3d.bundle.min.js';
+               script.onload = () => {
                    let skinViewer = new skinview3d.SkinViewer({
                      canvas: $el.querySelector('#skin-canvas'),
                      width: 300,
@@ -274,8 +273,8 @@ title: الرئيسية
                    });
                    skinViewer.animations.add(skinview3d.WalkingAnimation);
                    skinViewer.animations.add(skinview3d.RotatingAnimation);
-                 }
-               }, 200);
+               };
+               document.head.appendChild(script);
              ">
           <canvas id="skin-canvas" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
           <div class="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-black/60 backdrop-blur-md rounded-full text-[10px] font-black text-gray-400 uppercase tracking-widest pointer-events-none">
@@ -283,38 +282,4 @@ title: الرئيسية
           </div>
         </div>
       </div>
-  <!-- MOROCCAN LANDMARK SHOWCASE -->
-  <section class="mt-40 mb-20">
-    <div class="text-center mb-16">
-      <h2 class="text-5xl font-black text-white italic uppercase tracking-tighter">معالم مغربية فـ <span class="text-moroccangreen">MINECRAFT</span></h2>
-      <p class="text-gray-500 mt-4">إبداعات المشتركين مستوحاة من الثقافة المغربية</p>
-    </div>
-    
-    <div class="grid md:grid-cols-3 gap-8">
-      <!-- Landmark 1 -->
-      <div class="group relative aspect-square rounded-[3rem] overflow-hidden border border-white/10">
-        <img src="https://media.forgecdn.net/avatars/thumbnails/591/10/256/256/637841050000000000.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-        <div class="absolute bottom-8 left-8 right-8">
-          <p class="text-xs font-black text-moroccangreen uppercase tracking-widest mb-1">صومعة حسان</p>
-          <p class="text-lg font-black text-white italic">بناء: SimoCraft</p>
-        </div>
-      </div>
-      <!-- Landmark 2 -->
-      <div class="group relative aspect-square rounded-[3rem] overflow-hidden border border-white/10">
-        <img src="https://media.forgecdn.net/avatars/thumbnails/591/10/256/256/637841050000000000.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-        <div class="absolute bottom-8 left-8 right-8">
-          <p class="text-xs font-black text-moroccangreen uppercase tracking-widest mb-1">قصبة الأوداية</p>
-          <p class="text-lg font-black text-white italic">بناء: DinoFan_99</p>
-        </div>
-      </div>
-      <!-- Submit Box -->
-      <div class="flex flex-col items-center justify-center p-8 rounded-[3rem] border-4 border-dashed border-white/5 bg-white/5 hover:bg-white/10 transition-all cursor-pointer">
-        <div class="text-4xl mb-4">📸</div>
-        <h3 class="text-xl font-black text-white uppercase italic">شارك بناءك!</h3>
-        <p class="text-gray-500 text-xs mt-2 text-center">صيفط لينا تصويرة ديال البناء ديالك باش تبان هنا</p>
-      </div>
-    </div>
-  </section>
 </div>
