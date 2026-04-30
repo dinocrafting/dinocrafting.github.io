@@ -1,48 +1,72 @@
 ---
+layout: default
 title: آخر الأخبار
 permalink: /ma/news/
 ---
 
-<div class="py-12" dir="rtl">
+<div class="py-20" dir="rtl">
   <div class="max-w-6xl mx-auto px-6">
-    <div class="flex justify-between items-center mb-16">
-      <h1 class="text-6xl font-black text-white italic uppercase tracking-tighter">أخبار <span class="text-moroccangreen">DINO</span></h1>
-      <div class="px-6 py-2 bg-white/5 rounded-full border border-white/10 text-xs font-bold text-gray-500 uppercase tracking-widest">Dino News Network</div>
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-24">
+      <div>
+        <div class="inline-flex items-center gap-3 px-4 py-2 bg-red-600/20 text-red-500 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-6">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+          Live Feed
+        </div>
+        <h1 class="text-7xl font-black text-white italic uppercase tracking-tighter leading-none">أخبار <span class="text-moroccangreen">DINO NEWS</span></h1>
+      </div>
+      <p class="text-gray-500 text-lg max-w-sm text-right">كاع التحديثات، الفيديوهات الجديدة، والأخبار الحصرية ديال Dino Crafting.</p>
     </div>
 
-    <!-- NEWS FEED -->
-    <div class="space-y-12">
-      <!-- Article 1 -->
-      <article class="group relative flex flex-col md:flex-row gap-12 p-8 rounded-[3rem] bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all">
-        <div class="w-full md:w-80 h-60 rounded-[2.5rem] overflow-hidden flex-shrink-0">
+    <!-- Featured News -->
+    <div class="grid gap-12">
+      <!-- Article 1: Large Featured -->
+      <article class="group relative flex flex-col lg:flex-row gap-12 p-10 rounded-[4rem] bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all overflow-hidden">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-moroccangreen/5 blur-[120px] rounded-full"></div>
+        <div class="w-full lg:w-[450px] aspect-video lg:aspect-square rounded-[3rem] overflow-hidden flex-shrink-0 border border-white/5 shadow-2xl">
           <img src="https://media.forgecdn.net/avatars/thumbnails/591/10/256/256/637841050000000000.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
         </div>
-        <div class="flex-1">
-          <div class="flex gap-4 mb-4">
-            <span class="text-moroccangreen text-[10px] font-black uppercase tracking-widest">Announcement</span>
+        <div class="flex-1 flex flex-col justify-center">
+          <div class="flex gap-4 mb-6">
+            <span class="px-4 py-1 bg-moroccangreen text-white text-[10px] font-black rounded-full uppercase tracking-widest">Global News</span>
             <span class="text-gray-600 text-[10px] font-black uppercase tracking-widest">30 April 2026</span>
           </div>
-          <h2 class="text-4xl font-black text-white mb-6 group-hover:text-moroccangreen transition-colors">إطلاق النسخة التجريبية من Dino Empire!</h2>
-          <p class="text-gray-400 text-lg leading-relaxed mb-8">اليوم هو يوم تاريخي! كنطلقو النسخة الجديدة من الموقع ديالنا بخصائص خيالية بحال الـ 3D Skin Viewer والبحث الصوتي بالدارجة...</p>
-          <a href="#" class="inline-flex items-center gap-2 text-moroccangreen font-black uppercase text-xs tracking-widest hover:translate-x-2 transition-transform">اقرأ المزيد &larr;</a>
+          <h2 class="text-5xl font-black text-white mb-8 group-hover:text-moroccangreen transition-colors leading-tight">إطلاق النسخة التجريبية من Dino Empire!</h2>
+          <p class="text-gray-400 text-xl leading-relaxed mb-10">اليوم هو يوم تاريخي للمجتمع ديالنا. كنطلقو النسخة الجديدة من الموقع بخصائص خيالية بحال الـ 3D Skin Viewer والبحث الصوتي بالدارجة. دخل وجرب دابا!</p>
+          <a href="#" class="px-10 py-5 bg-white text-black font-black rounded-2xl hover:scale-105 transition-all inline-block w-fit uppercase tracking-widest italic">إقرأ الخبر كاملاً</a>
         </div>
       </article>
 
-      <!-- Article 2 -->
-      <article class="group relative flex flex-col md:flex-row gap-12 p-8 rounded-[3rem] bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all">
-        <div class="w-full md:w-80 h-60 rounded-[2.5rem] overflow-hidden flex-shrink-0 bg-black/40 flex items-center justify-center">
-          <img src="/assets/img/flowinventory-icon.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="FlowInventory">
-        </div>
-        <div class="flex-1">
+      <!-- Small Grid News -->
+      <div class="grid md:grid-cols-2 gap-12 mt-12">
+        <!-- Article 2 -->
+        <article class="group p-8 rounded-[3.5rem] bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all">
+          <div class="aspect-video rounded-[2.5rem] overflow-hidden mb-8 border border-white/5">
+             <img src="/assets/images/custom-ava(6).png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          </div>
           <div class="flex gap-4 mb-4">
             <span class="text-moroccangreen text-[10px] font-black uppercase tracking-widest">Mod Update</span>
             <span class="text-gray-600 text-[10px] font-black uppercase tracking-widest">28 April 2026</span>
           </div>
-          <h2 class="text-4xl font-black text-white mb-6 group-hover:text-moroccangreen transition-colors">تحديث جديد لـ FlowInventory (v2.1)</h2>
-          <p class="text-gray-400 text-lg leading-relaxed mb-8">صلحنا كاع المشاكل ديال الـ Lag وزدنا دعم كامل لماينكرافت 1.21. التحديث متوفر دابا للتحميل.</p>
-          <a href="#" class="inline-flex items-center gap-2 text-moroccangreen font-black uppercase text-xs tracking-widest hover:translate-x-2 transition-transform">اقرأ المزيد &larr;</a>
-        </div>
-      </article>
+          <h3 class="text-3xl font-black text-white mb-6 group-hover:text-moroccangreen transition-colors">تحديث جديد لـ FlowInventory</h3>
+          <p class="text-gray-500 leading-relaxed mb-8">صلحنا كاع المشاكل ديال الـ Lag وزدنا دعم كامل لماينكرافت 1.21. التحديث متوفر دابا للتحميل.</p>
+          <a href="#" class="text-moroccangreen font-black uppercase text-xs tracking-widest group-hover:translate-x-2 transition-transform inline-block">التفاصيل &larr;</a>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="group p-8 rounded-[3.5rem] bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all">
+          <div class="aspect-video rounded-[2.5rem] overflow-hidden mb-8 border border-white/5">
+             <img src="/assets/images/custom-ava(24).png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          </div>
+          <div class="flex gap-4 mb-4">
+            <span class="text-moroccangreen text-[10px] font-black uppercase tracking-widest">YouTube</span>
+            <span class="text-gray-600 text-[10px] font-black uppercase tracking-widest">25 April 2026</span>
+          </div>
+          <h3 class="text-3xl font-black text-white mb-6 group-hover:text-moroccangreen transition-colors">فيديو جديد: كيفاش تصاوب سيرفر</h3>
+          <p class="text-gray-500 leading-relaxed mb-8">شرح كامل ومبسط لطريقة إنشاء سيرفر ماينكرافت مجاني فالمغرب. الفيديو دابا على يوتيوب.</p>
+          <a href="#" class="text-moroccangreen font-black uppercase text-xs tracking-widest group-hover:translate-x-2 transition-transform inline-block">تفرج دابا &larr;</a>
+        </article>
+      </div>
     </div>
   </div>
 </div>
