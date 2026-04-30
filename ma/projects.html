@@ -1,48 +1,49 @@
 ---
 layout: default
 lang: ma
-title: مشاريعنا
+title: المشاريع
+permalink: /ma/projects/
 ---
 
-<div class="py-12" dir="rtl">
+<div class="py-12" dir="rtl" x-data="{ 
+    filter: 'all',
+    search: '',
+    projects: [
+      { title: 'FlowInventory', category: 'mods', version: '1.21+', img: 'https://media.forgecdn.net/avatars/591/10/637841050000000000.png', desc: 'أذكى نظام لتنظيم الشنطة في ماينكرافت. كيخليك تركز على اللعب بلا ما تضيع الوقت فالتنظيم.' },
+      { title: 'Dino Shaders', category: 'shaders', version: 'High/Low', img: '/assets/images/custom-ava(6).png', desc: 'شيدرز خفيف للأجهزة الضعيفة بزاف، كيعطي جمالية للعبة بلا ما يقللها.' },
+      { title: 'Dino Texture Pack', category: 'textures', version: '16x16', img: '/assets/images/custom-ava(24).png', desc: 'باك كايغير شكل البلوكات للأفضل وكايعطي تجربة لعب مريحة للعين.' }
+    ]
+  }">
+  
   <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-16">
-      <h1 class="text-6xl font-black text-white mb-6 italic uppercase tracking-tighter">مشاريع <span class="text-moroccangreen">DINO</span></h1>
-      <p class="text-xl text-gray-400">هنا كنحط كاع المودات، المابات، والبرامج اللي كنصاوب ليكم.</p>
+    <div class="text-center mb-20">
+      <h1 class="text-6xl font-black text-white mb-6 uppercase italic tracking-tighter">مشاريع <span class="text-moroccangreen">DINO</span></h1>
+      <p class="text-xl text-gray-500 max-w-2xl mx-auto">هنا غاتلقاو كاع المودات والشيدرز لي كنصاوب ليكم باش تحسنو تجربة اللعب.</p>
     </div>
 
-    <!-- PROJECTS GRID -->
-    <div class="grid md:grid-cols-2 gap-8">
-      <!-- Project 1: FlowInventory -->
-      <div class="group bg-white/5 rounded-[3rem] border border-white/10 overflow-hidden hover:bg-white/[0.08] transition-all duration-500">
-        <div class="aspect-video relative overflow-hidden">
-          <img src="https://media.forgecdn.net/avatars/thumbnails/591/10/256/256/637841050000000000.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-          <div class="absolute bottom-6 right-6">
-            <span class="px-4 py-1 bg-moroccangreen text-white text-[10px] font-black rounded-full uppercase tracking-widest">Active</span>
-          </div>
-        </div>
-        <div class="p-8">
-          <h3 class="text-3xl font-black text-white mb-4">FlowInventory</h3>
-          <p class="text-gray-400 mb-8 leading-relaxed">أذكى نظام لتنظيم الشنطة في ماينكرافت. كيخليك تركز على اللعب بلا ما تضيع الوقت فالتنظيم.</p>
-          <div class="flex gap-4">
-            <a href="/mods/flowinventory/" class="px-8 py-3 bg-moroccangreen text-white text-xs font-black rounded-xl hover:scale-105 transition-all shadow-lg shadow-moroccangreen/20">شوف التفاصيل</a>
-            <a href="https://www.curseforge.com/minecraft/mc-mods/flowinventory" class="px-8 py-3 bg-white/5 text-white text-xs font-black rounded-xl hover:bg-white/10 transition-all">تحميل</a>
-          </div>
-        </div>
-      </div>
+    <!-- Filters -->
+    <div class="flex flex-wrap justify-center gap-4 mb-16">
+      <button @click="filter = 'all'" :class="filter === 'all' ? 'bg-moroccangreen text-white shadow-xl shadow-moroccangreen/40' : 'bg-white/5 text-gray-500 hover:text-white'" class="px-8 py-4 rounded-2xl font-black transition-all uppercase italic text-xs tracking-widest">جميع المشاريع</button>
+      <button @click="filter = 'mods'" :class="filter === 'mods' ? 'bg-moroccangreen text-white shadow-xl shadow-moroccangreen/40' : 'bg-white/5 text-gray-500 hover:text-white'" class="px-8 py-4 rounded-2xl font-black transition-all uppercase italic text-xs tracking-widest">MODS</button>
+      <button @click="filter = 'shaders'" :class="filter === 'shaders' ? 'bg-moroccangreen text-white shadow-xl shadow-moroccangreen/40' : 'bg-white/5 text-gray-500 hover:text-white'" class="px-8 py-4 rounded-2xl font-black transition-all uppercase italic text-xs tracking-widest">SHADERS</button>
+      <button @click="filter = 'textures'" :class="filter === 'textures' ? 'bg-moroccangreen text-white shadow-xl shadow-moroccangreen/40' : 'bg-white/5 text-gray-500 hover:text-white'" class="px-8 py-4 rounded-2xl font-black transition-all uppercase italic text-xs tracking-widest">TEXTURES</button>
+    </div>
 
-      <!-- Project 2: Dino Tools (Concept) -->
-      <div class="group bg-white/5 rounded-[3rem] border border-white/10 overflow-hidden opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-        <div class="aspect-video bg-black/40 flex items-center justify-center">
-          <span class="text-4xl font-black text-white/20 italic uppercase tracking-tighter">قريباً</span>
+    <!-- Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <template x-for="project in projects.filter(p => filter === 'all' || p.category === filter)" :key="project.title">
+        <div class="group bg-white/5 border border-white/10 rounded-[3rem] p-8 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-500">
+          <div class="aspect-square rounded-[2.5rem] overflow-hidden mb-8 border border-white/5 shadow-2xl relative">
+            <img :src="project.img" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100">
+            <div class="absolute top-6 right-6 px-4 py-2 bg-black/80 backdrop-blur-md rounded-full text-[10px] font-black text-moroccangreen border border-moroccangreen/20 uppercase" x-text="project.version"></div>
+          </div>
+          <h3 class="text-3xl font-black text-white mb-4 group-hover:text-moroccangreen transition-colors" x-text="project.title"></h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-10 h-12 overflow-hidden" x-text="project.desc"></p>
+          <div class="flex gap-4">
+             <a href="#" class="flex-1 py-4 bg-moroccangreen text-white text-center text-xs font-black rounded-2xl hover:scale-[1.02] transition-all shadow-xl shadow-moroccangreen/20 uppercase italic tracking-widest">تحميل الآن</a>
+          </div>
         </div>
-        <div class="p-8">
-          <h3 class="text-3xl font-black text-white mb-4 uppercase italic">Dino Tools</h3>
-          <p class="text-gray-400 mb-8 leading-relaxed">مجموعة أدوات احترافية لتحسين الـ FPS وتغيير شكل اللعبة حسب ذوقك.</p>
-          <button disabled class="px-8 py-3 bg-white/5 text-gray-500 text-xs font-black rounded-xl cursor-not-allowed">قيد التطوير</button>
-        </div>
-      </div>
+      </template>
     </div>
   </div>
 </div>
