@@ -1,0 +1,55 @@
+---
+layout: default
+lang: ma
+title: Admin Stats
+permalink: /admin/stats/
+---
+
+<div class="py-20" x-data="{ 
+    key: '',
+    authorized: false,
+    check() {
+      if (this.key === 'dino_admin_2026') {
+        this.authorized = true;
+      } else {
+        alert('Access Denied');
+      }
+    }
+  }">
+  
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <div x-show="!authorized">
+       <h1 class="text-4xl font-black text-white mb-8">Admin Access Required</h1>
+       <input type="password" x-model="key" placeholder="Enter Secret Key" class="px-8 py-4 bg-white/5 border border-white/10 rounded-2xl text-white outline-none focus:border-moroccangreen mb-8">
+       <br>
+       <button @click="check()" class="px-10 py-4 bg-moroccangreen text-white font-black rounded-xl">Unlock Dashboard</button>
+    </div>
+
+    <div x-show="authorized" x-transition>
+       <h1 class="text-6xl font-black text-white mb-12 uppercase italic tracking-tighter">Empire <span class="text-moroccangreen">Analytics</span></h1>
+       
+       <div class="grid md:grid-cols-2 gap-8 text-right" dir="rtl">
+          <div class="p-10 rounded-[3rem] bg-white/5 border border-white/10">
+             <h3 class="text-xs font-black text-gray-500 uppercase tracking-widest mb-4">Total Users (Estimated)</h3>
+             <p class="text-5xl font-black text-white">4,289</p>
+          </div>
+          <div class="p-10 rounded-[3rem] bg-white/5 border border-white/10">
+             <h3 class="text-xs font-black text-gray-500 uppercase tracking-widest mb-4">Active Holiday</h3>
+             <p class="text-5xl font-black text-moroccangreen">Ramadan 🌙</p>
+          </div>
+          <div class="p-10 rounded-[3rem] bg-white/5 border border-white/10">
+             <h3 class="text-xs font-black text-gray-500 uppercase tracking-widest mb-4">Top Mod</h3>
+             <p class="text-2xl font-black text-white italic">FlowInventory v1.21</p>
+          </div>
+          <div class="p-10 rounded-[3rem] bg-white/5 border border-white/10">
+             <h3 class="text-xs font-black text-gray-500 uppercase tracking-widest mb-4">Coins in Circulation</h3>
+             <p class="text-5xl font-black text-yellow-500">850K 🪙</p>
+          </div>
+       </div>
+
+       <div class="mt-12 p-8 rounded-3xl bg-red-600/10 border border-red-600/20 text-red-500 text-sm font-bold">
+          ⚠️ This dashboard is strictly for Dino Crafting. All data is locally processed.
+       </div>
+    </div>
+  </div>
+</div>

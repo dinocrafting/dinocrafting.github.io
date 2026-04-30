@@ -1,15 +1,52 @@
 <header class="sticky top-0 z-50 bg-white/80 dark:bg-darkbg/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800"
         x-data="{ 
-          level: localStorage.getItem('dinoLevel') || 1,
-          exp: localStorage.getItem('dinoExp') || 0,
-          coins: localStorage.getItem('dinoCoins') || 0,
+          level: 1,
+          exp: 0,
+          coins: 0,
           mobileMenu: false,
+          SALT: 'dino_secret_99_empire',
+          
+          getSignature(val1, val2) {
+            return btoa(this.SALT + val1 + '_' + val2).split('').reverse().join('');
+          },
+
+          verifySecurity() {
+            const storedLvl = localStorage.getItem('dinoLevel') || 1;
+            const storedExp = localStorage.getItem('dinoExp') || 0;
+            const storedCoins = localStorage.getItem('dinoCoins') || 0;
+            const storedSig = localStorage.getItem('dinoSig');
+            
+            const expectedSig = this.getSignature(storedLvl, storedCoins);
+            
+            if (storedSig && storedSig !== expectedSig) {
+              console.warn('⚠️ Anti-Cheat: Invalid Signature detected. Resetting stats.');
+              this.resetStats();
+              return false;
+            }
+            this.level = parseInt(storedLvl);
+            this.exp = parseInt(storedExp);
+            this.coins = parseInt(storedCoins);
+            return true;
+          },
+
+          saveStats() {
+            localStorage.setItem('dinoLevel', this.level);
+            localStorage.setItem('dinoExp', this.exp);
+            localStorage.setItem('dinoCoins', this.coins);
+            localStorage.setItem('dinoSig', this.getSignature(this.level, this.coins));
+          },
+
+          resetStats() {
+            this.level = 1; this.exp = 0; this.coins = 0;
+            this.saveStats();
+          },
+
           init() {
+            if (!this.verifySecurity()) return;
+
             // Holiday Engine Logic
             const now = new Date();
             const year = now.getFullYear();
-            
-            // Approximate Holiday Dates for 2026 (Adjust as needed)
             const holidays = [
               { name: 'ramadan', start: new Date(year, 1, 18), end: new Date(year, 2, 19) },
               { name: 'eid-fitr', start: new Date(year, 2, 20), end: new Date(year, 2, 22) },
@@ -17,16 +54,13 @@
             ];
 
             const currentHoliday = holidays.find(h => now >= h.start && now <= h.end);
-            if (currentHoliday) {
-              document.body.classList.add('theme-' + currentHoliday.name);
-              console.log('🕌 Active Holiday: ' + currentHoliday.name);
-            }
+            if (currentHoliday) document.body.classList.add('theme-' + currentHoliday.name);
 
-            // Gamification
-            this.exp = parseInt(this.exp) + 5;
+            // Reward Visit
+            this.exp += 5;
+            this.coins += 5;
             if (this.exp >= 100) { this.level++; this.exp = 0; }
-            localStorage.setItem('dinoExp', this.exp);
-            localStorage.setItem('dinoLevel', this.level);
+            this.saveStats();
           }
         }">
   <div class="container mx-auto px-4 h-20 flex items-center justify-between">
