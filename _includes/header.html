@@ -18,13 +18,13 @@
 
     <!-- Desktop Nav -->
     <nav class="hidden lg:flex items-center gap-8">
-      <a href="/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors" data-i18n="nav_home">Home</a>
-      <a href="/mods/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors" data-i18n="nav_mods">Mods</a>
-      <a href="/videos/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors" data-i18n="nav_videos">Videos</a>
-      <a href="/community/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors" data-i18n="nav_community">Community</a>
-      <a href="/news/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors" data-i18n="nav_news">News</a>
-      <a href="/about/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors" data-i18n="nav_about">About</a>
-      <a href="/contact/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors" data-i18n="nav_contact">Contact</a>
+      <a href="/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">الرئيسية</a>
+      <a href="/mods/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">المودات</a>
+      <a href="/videos/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">الفيديوهات</a>
+      <a href="/community/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">المجتمع</a>
+      <a href="/news/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">الأخبار</a>
+      <a href="/about/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">حول</a>
+      <a href="/contact/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">اتصل</a>
     </nav>
 
     <!-- Actions -->
@@ -37,22 +37,11 @@
       </div>
       {% endif %}
 
-      <!-- Language Switcher -->
-      <div class="relative" x-data="{ open: false }">
-        <button @click="open = !open" class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all uppercase font-black text-[10px] text-white">
-          <span id="current-language-label">{{ lang | upcase }}</span>
-          <svg class="w-3 h-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-        </button>
-        <div x-show="open" @click.away="open = false" class="absolute top-full right-0 mt-2 w-32 bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50">
-          <a href="?lang=ma" class="block px-4 py-3 text-[10px] font-black text-gray-400 hover:text-white hover:bg-white/5 transition-all">🇲🇦 DARIJA</a>
-          <a href="?lang=en" class="block px-4 py-3 text-[10px] font-black text-gray-400 hover:text-white hover:bg-white/5 transition-all">🇺🇸 ENGLISH</a>
-          <a href="?lang=fr" class="block px-4 py-3 text-[10px] font-black text-gray-400 hover:text-white hover:bg-white/5 transition-all">🇫🇷 FRENCH</a>
-        </div>
-      </div>
+      <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl uppercase font-black text-[10px] text-white">العربية</div>
 
       <div class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10">
         <span class="w-2.5 h-2.5 rounded-full bg-yellow-400" id="data-health-dot"></span>
-        <span class="text-[10px] font-black text-gray-300 uppercase tracking-widest" data-i18n="data_health">Data health</span>
+        <span class="text-[10px] font-black text-gray-300 uppercase tracking-widest">حالة البيانات</span>
       </div>
 
       <!-- Hamburger Button -->
@@ -68,13 +57,13 @@
     <!-- Mobile Menu Drawer -->
     <div x-show="mobileMenu" x-transition class="lg:hidden fixed inset-0 z-40 bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-center space-y-12">
       <nav class="flex flex-col items-center space-y-8">
-        <a @click="mobileMenu = false" href="/" class="text-4xl font-black text-white uppercase italic" data-i18n="nav_home">Home</a>
-        <a @click="mobileMenu = false" href="/mods/" class="text-4xl font-black text-white uppercase italic" data-i18n="nav_mods">Mods</a>
-        <a @click="mobileMenu = false" href="/videos/" class="text-4xl font-black text-white uppercase italic" data-i18n="nav_videos">Videos</a>
-        <a @click="mobileMenu = false" href="/community/" class="text-4xl font-black text-white uppercase italic" data-i18n="nav_community">Community</a>
-        <a @click="mobileMenu = false" href="/news/" class="text-4xl font-black text-white uppercase italic" data-i18n="nav_news">News</a>
-        <a @click="mobileMenu = false" href="/about/" class="text-4xl font-black text-white uppercase italic" data-i18n="nav_about">About</a>
-        <a @click="mobileMenu = false" href="/contact/" class="text-4xl font-black text-white uppercase italic" data-i18n="nav_contact">Contact</a>
+        <a @click="mobileMenu = false" href="/" class="text-4xl font-black text-white uppercase italic">الرئيسية</a>
+        <a @click="mobileMenu = false" href="/mods/" class="text-4xl font-black text-white uppercase italic">المودات</a>
+        <a @click="mobileMenu = false" href="/videos/" class="text-4xl font-black text-white uppercase italic">الفيديوهات</a>
+        <a @click="mobileMenu = false" href="/community/" class="text-4xl font-black text-white uppercase italic">المجتمع</a>
+        <a @click="mobileMenu = false" href="/news/" class="text-4xl font-black text-white uppercase italic">الأخبار</a>
+        <a @click="mobileMenu = false" href="/about/" class="text-4xl font-black text-white uppercase italic">حول</a>
+        <a @click="mobileMenu = false" href="/contact/" class="text-4xl font-black text-white uppercase italic">اتصل</a>
       </nav>
     </div>
 </header>

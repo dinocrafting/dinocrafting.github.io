@@ -7,11 +7,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loaded) return;
     loaded = true;
 
+    const appendWithScripts = (container, html) => {
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = html;
+
+      Array.from(wrapper.childNodes).forEach((node) => {
+        if (node.nodeName && node.nodeName.toLowerCase() === 'script') {
+          const script = document.createElement('script');
+          Array.from(node.attributes).forEach((attr) => script.setAttribute(attr.name, attr.value));
+          script.text = node.textContent || '';
+          container.appendChild(script);
+        } else {
+          container.appendChild(node.cloneNode(true));
+        }
+      });
+    };
+
     adSlots.forEach((slot) => {
       const container = slot.querySelector('[id^="ad-"][id$="-container"]');
       const template = slot.querySelector('.ad-template');
       if (!container || !template) return;
-      container.innerHTML = template.innerHTML;
+      container.innerHTML = '';
+      appendWithScripts(container, template.innerHTML);
     });
   };
 

@@ -1,4 +1,4 @@
-{% assign t = site.data.translations[include.lang] %}
+{% assign t = site.data.i18n.ma.ui %}
 
 <div class="space-y-32" x-data="{ 
     search: '',
@@ -25,14 +25,14 @@
         <p class="text-xl lg:text-2xl text-gray-400 mb-10 max-w-2xl">{{ t.hero_subtitle }}</p>
         
          <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-           <a href="/{{ include.lang }}/mods/" class="px-10 py-5 bg-moroccangreen text-white font-black rounded-2xl shadow-xl shadow-moroccangreen/30 hover:scale-105 transition-all uppercase tracking-widest italic">
+           <a href="/mods/" class="px-10 py-5 bg-moroccangreen text-white font-black rounded-2xl shadow-xl shadow-moroccangreen/30 hover:scale-105 transition-all uppercase tracking-widest italic">
              {{ t.btn_mods }}
            </a>
-           <a href="/{{ include.lang }}/videos/" class="px-10 py-5 bg-red-600 text-white font-black rounded-2xl shadow-xl shadow-red-600/30 hover:scale-105 transition-all uppercase tracking-widest italic">
+           <a href="/videos/" class="px-10 py-5 bg-red-600 text-white font-black rounded-2xl shadow-xl shadow-red-600/30 hover:scale-105 transition-all uppercase tracking-widest italic">
              <svg class="inline w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-0.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
              {{ t.btn_youtube }}
            </a>
-           <a href="/{{ include.lang }}/community/" class="px-10 py-5 bg-white/5 border border-white/10 text-white font-black rounded-2xl hover:bg-white/10 transition-all uppercase tracking-widest italic">
+           <a href="/community/" class="px-10 py-5 bg-white/5 border border-white/10 text-white font-black rounded-2xl hover:bg-white/10 transition-all uppercase tracking-widest italic">
              {{ t.btn_community }}
            </a>
          </div>
@@ -46,7 +46,7 @@
   <section class="p-12 lg:p-20 rounded-[4rem] bg-gradient-to-br from-red-600/10 via-black to-black border border-white/5 relative overflow-hidden group">
     <div class="relative z-10 flex flex-col lg:flex-row items-center gap-16">
       <div class="flex-1 text-center lg:text-left">
-        <h2 class="text-6xl font-black text-white mb-8 tracking-tighter uppercase leading-none">Meet <br><span class="text-red-600 italic">Dino Crafting</span></h2>
+        <h2 class="text-6xl font-black text-white mb-8 tracking-tighter uppercase leading-none">تعرف على <br><span class="text-red-600 italic">Dino Crafting</span></h2>
         <p class="text-xl text-gray-400 mb-12 leading-relaxed max-w-2xl">{{ t.bio_desc }}</p>
         <a href="https://www.youtube.com/@Dinocrafting" target="_blank" class="inline-flex items-center gap-4 px-12 py-6 bg-red-600 text-white font-black rounded-[2.5rem] hover:bg-red-700 transition-all shadow-2xl shadow-red-600/30 uppercase tracking-widest italic">
           {{ t.btn_subscribe }}
@@ -73,10 +73,17 @@
                  } else if (typeof skinview3d.WalkingAnimation === 'function' && 'animation' in skinViewer) {
                    skinViewer.animation = new skinview3d.WalkingAnimation();
                  }
-                 const control = skinViewer.createOrbitControls();
-                 control.enableZoom = false;
-                 control.enablePan = false;
-                 control.rotateSpeed = 0.8;
+                 let control = null;
+                 if (typeof skinViewer.createOrbitControls === 'function') {
+                   control = skinViewer.createOrbitControls();
+                 } else if (typeof skinview3d.OrbitControls === 'function') {
+                   control = new skinview3d.OrbitControls(skinViewer);
+                 }
+                 if (control) {
+                   control.enableZoom = false;
+                   control.enablePan = false;
+                   control.rotateSpeed = 0.8;
+                 }
                }
              ">
           <canvas id="skin-canvas" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
@@ -90,16 +97,16 @@
     <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
       <div>
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400 text-[10px] font-black uppercase tracking-widest mb-4">
-          Featured Mod
+          مود مميز
         </div>
         <h3 class="text-4xl font-black text-white mb-3">FlowInventory</h3>
         <p class="text-gray-400 max-w-2xl">
-          Smart inventory flow for Minecraft by Dino Crafting. Faster sorting, cleaner gameplay, and better quality of life.
+          نظام ذكي لتنظيم المخزون في ماينكرافت من Dino Crafting: فرز أسرع، لعب أنظف، وتجربة أفضل.
         </p>
       </div>
       <div class="flex flex-wrap gap-4">
-        <a href="{{ site.github.flowinventory }}" target="_blank" class="px-6 py-3 rounded-xl bg-white/10 border border-white/20 text-white font-bold hover:bg-white/20 transition-all">GitHub Source</a>
-        <a href="{{ site.modrinth.flowinventory }}" target="_blank" class="px-6 py-3 rounded-xl bg-moroccangreen text-white font-bold hover:brightness-110 transition-all">Modrinth (Under Review)</a>
+        <a href="{{ site.github.flowinventory }}" target="_blank" class="px-6 py-3 rounded-xl bg-white/10 border border-white/20 text-white font-bold hover:bg-white/20 transition-all">الكود على GitHub</a>
+        <a href="{{ site.modrinth.flowinventory }}" target="_blank" class="px-6 py-3 rounded-xl bg-moroccangreen text-white font-bold hover:brightness-110 transition-all">Modrinth (قيد المراجعة)</a>
       </div>
     </div>
   </section>

@@ -12,7 +12,7 @@ lang: ma
       <div>
         <div class="inline-flex items-center gap-3 px-4 py-2 bg-red-600/20 text-red-500 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-6">
           <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-          Live Updates
+          تحديثات مباشرة
         </div>
         <h1 class="text-7xl font-black text-white italic uppercase tracking-tighter leading-none">أخبار <span class="text-moroccangreen">DINO NEWS</span></h1>
       </div>
@@ -26,11 +26,11 @@ lang: ma
     </div>
 
     <div class="flex flex-wrap gap-3 mb-4" id="news-filters">
-      <button data-filter="all" class="px-4 py-2 rounded-full bg-moroccangreen text-white text-xs font-black uppercase tracking-widest">All</button>
-      <button data-filter="blogs" class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-black uppercase tracking-widest">Blogs</button>
-      <button data-filter="news" class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-black uppercase tracking-widest">News</button>
-      <button data-filter="theories" class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-black uppercase tracking-widest">Theories</button>
-      <button data-filter="mods" class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-black uppercase tracking-widest">Mods</button>
+      <button data-filter="all" class="px-4 py-2 rounded-full bg-moroccangreen text-white text-xs font-black uppercase tracking-widest">الكل</button>
+      <button data-filter="blogs" class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-black uppercase tracking-widest">مقالات</button>
+      <button data-filter="news" class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-black uppercase tracking-widest">أخبار</button>
+      <button data-filter="theories" class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-black uppercase tracking-widest">نظريات</button>
+      <button data-filter="mods" class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-black uppercase tracking-widest">مودات</button>
     </div>
 
     <div id="trending-tags" class="flex flex-wrap gap-2 mb-10"></div>
@@ -45,7 +45,7 @@ lang: ma
     <div id="no-posts" class="hidden text-center py-20">
       <div class="text-6xl mb-6">📭</div>
       <h2 class="text-3xl font-black text-white mb-4">لا توجد أخبار حالياً</h2>
-      <p class="text-gray-400 mb-8">ت不就 تظهر جديد قريباً. تابعنا على Discord باش توصلك الأخبار أول بأول.</p>
+      <p class="text-gray-400 mb-8">لا توجد مستجدات الآن. تابعنا على Discord باش توصلك الأخبار أول بأول.</p>
       <a href="{{ site.discord.invite }}" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-indigo-600 text-white font-bold rounded-2xl">
         انضم للديسكورد
       </a>
@@ -86,10 +86,10 @@ lang: ma
       if (data.news.featured) {
         featuredEl.innerHTML = `
           <div class="p-8 rounded-[3rem] bg-white/5 border border-moroccangreen/30">
-            <div class="text-[10px] uppercase tracking-widest text-moroccangreen font-black mb-3">Featured Pin</div>
+            <div class="text-[10px] uppercase tracking-widest text-moroccangreen font-black mb-3">منشور مميز</div>
             <h2 class="text-3xl font-black text-white mb-3">${data.news.featured.title}</h2>
             <p class="text-gray-400 mb-5">${data.news.featured.excerpt || ''}</p>
-            <a href="${data.news.featured.url || '#'}" target="_blank" class="inline-flex px-5 py-2 rounded-lg bg-moroccangreen text-white font-bold">Open Source Post</a>
+            <a href="${data.news.featured.url || '#'}" target="_blank" class="inline-flex px-5 py-2 rounded-lg bg-moroccangreen text-white font-bold">افتح المقال الأصلي</a>
           </div>
         `;
       }
@@ -131,7 +131,7 @@ lang: ma
               </div>
               <h2 class="${titleClass} font-black ${isFeatured ? 'text-white mb-8 group-hover:text-moroccangreen transition-colors leading-tight' : 'text-white mb-6 group-hover:text-moroccangreen transition-colors'}">${post.title}</h2>
               <p class="text-gray-400 ${excerptClass} leading-relaxed">${post.content}...</p>
-              <a href="${post.url}" target="_blank" class="inline-flex mt-6 px-4 py-2 bg-white/10 border border-white/20 rounded-xl text-white font-bold hover:bg-white/20 transition-all w-fit">Open original</a>
+              <a href="${post.url}" target="_blank" class="inline-flex mt-6 px-4 py-2 bg-white/10 border border-white/20 rounded-xl text-white font-bold hover:bg-white/20 transition-all w-fit">افتح المصدر</a>
             </div>
           </article>
           `;

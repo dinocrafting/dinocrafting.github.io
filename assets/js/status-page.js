@@ -20,18 +20,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     set('status-version', stats.stats_version || '--');
     set('status-generated', stats.generated_at || '--');
     set('status-age', String(stats.health?.age_minutes ?? '--'));
-    set('status-stale-after', `${stats.health?.stale_after_minutes ?? '--'} min`);
-    set('status-state', stats.health?.is_stale ? 'stale' : 'healthy');
+    set('status-stale-after', `${stats.health?.stale_after_minutes ?? '--'} دقيقة`);
+    set('status-state', stats.health?.is_stale ? 'منتهي' : 'سليم');
 
     const sources = stats.sources || {};
     sourcesContainer.innerHTML = Object.entries(sources).map(([key, state]) => `
       <div class="p-4 rounded-xl bg-black/30 border border-white/10 flex items-center justify-between gap-3">
         <span class="text-gray-300 text-sm">${key}</span>
-        <span class="px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ${badgeClass(state)}">${state || 'cached'}</span>
+        <span class="px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ${badgeClass(state)}">${state === 'live' ? 'مباشر' : (state === 'unavailable' ? 'غير متاح' : 'مخزن')}</span>
       </div>
     `).join('');
   } catch (error) {
-    sourcesContainer.innerHTML = '<div class="text-red-400 text-sm">Failed to load status data.</div>';
+    sourcesContainer.innerHTML = '<div class="text-red-400 text-sm">تعذر تحميل بيانات الحالة.</div>';
     console.warn('Status page load failed:', error);
   }
 });

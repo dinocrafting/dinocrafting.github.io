@@ -9,13 +9,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   };
   const setSourceBadge = (source, state) => {
+    const labels = {
+      live: 'مباشر',
+      cached: 'مخزن',
+      unavailable: 'غير متاح'
+    };
     const styles = {
       live: 'bg-emerald-500/20 text-emerald-300',
       cached: 'bg-yellow-500/20 text-yellow-300',
       unavailable: 'bg-red-500/20 text-red-300'
     };
     document.querySelectorAll(`[data-source-badge="${source}"]`).forEach((el) => {
-      el.textContent = state;
+      el.textContent = labels[state] || labels.cached;
       el.className = `px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ${styles[state] || styles.cached}`;
     });
   };
@@ -45,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       if (cached?.youtube?.latest_video) {
         document.querySelectorAll('[data-latest-video-title]').forEach((el) => {
-          el.textContent = cached.youtube.latest_video.title || 'Latest upload';
+          el.textContent = cached.youtube.latest_video.title || 'آخر فيديو';
         });
         document.querySelectorAll('[data-latest-video-link]').forEach((el) => {
           el.href = cached.youtube.latest_video.url || 'https://www.youtube.com/@Dinocrafting';
@@ -73,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const top3 = cached.news.posts.slice(0, 3);
         fanLatestPosts.innerHTML = top3.map((post) => `
           <a href="${post.url || '#'}" target="_blank" class="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-moroccangreen/40 transition-all">
-            <div class="text-white font-bold text-sm line-clamp-2 mb-2">${post.title || 'Untitled'}</div>
+            <div class="text-white font-bold text-sm line-clamp-2 mb-2">${post.title || 'بدون عنوان'}</div>
             <div class="text-gray-400 text-xs line-clamp-2">${post.excerpt || ''}</div>
           </a>
         `).join('');
@@ -103,7 +108,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   } catch {}
 
   if ([...document.querySelectorAll('[data-stat="discord-members"]')].every((el) => el.textContent === '--' || el.textContent === '0')) {
-    setStat('discord-members', 'n/a');
+    setStat('discord-members', '0');
   }
   setSourceBadge('youtube_feed', 'cached');
   setSourceBadge('modrinth_api', 'cached');
