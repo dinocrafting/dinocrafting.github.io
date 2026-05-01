@@ -18,7 +18,7 @@ lang: ma
   </section>
 
   <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {% for b in builds %}{% if b.id %}
+    {% for b in builds.builds %}
     <article class="group rounded-[2.5rem] bg-white/5 border border-white/10 overflow-hidden hover:border-cyan-500/30 transition-all">
       {% if b.image != "" %}
       <div class="aspect-video overflow-hidden">
@@ -46,7 +46,7 @@ lang: ma
         </div>
       </div>
     </article>
-    {% endif %}{% endfor %}
+    {% endfor %}
   </section>
 
   <section class="p-12 rounded-[3rem] bg-gradient-to-br from-cyan-500/10 via-black to-black border border-cyan-500/20 text-center">

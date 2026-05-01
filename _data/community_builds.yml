@@ -1,62 +1,63 @@
-- id: castle-medieval
-  title: "قلعة من العصور الوسطى"
-  builder: "Hamza"
-  builder_socials: "@hamza_builds"
-  description: "قلعة ضخمة بأسلوب القرون الوسطى مع تفاصيل دقيقة وحديقة كاملة."
-  category: "Medieval"
-  image: "https://images.unsplash.com/photo-1564660434144-2b3a3e3a3a3a?w=800"
-  hours: 45
-  blocks_used: "~150,000"
-  download_url: ""
-  date: "2026-04-15"
+builds:
+  - id: castle-medieval
+    title: "قلعة من العصور الوسطى"
+    builder: "Hamza"
+    builder_socials: "@hamza_builds"
+    description: "قلعة ضخمة بأسلوب القرون الوسطى مع تفاصيل دقيقة وحديقة كاملة."
+    category: "Medieval"
+    image: "https://images.unsplash.com/photo-1564660434144-2b3a3e3a3a3a?w=800"
+    hours: 45
+    blocks_used: "~150,000"
+    download_url: ""
+    date: "2026-04-15"
 
-- id: modern-villa
-  title: "فيلا عصرية"
-  builder: "Salma"
-  builder_socials: "@salma_designs"
-  description: "فيلا حديثة بتصميم بسيط، نوافذ زجاجية، وحوض سباحة."
-  category: "Modern"
-  image: "https://images.unsplash.com/photo-1564660434144-2b3a3e3a3a3a?w=800"
-  hours: 28
-  blocks_used: "~80,000"
-  download_url: ""
-  date: "2026-04-08"
+  - id: modern-villa
+    title: "فيلا عصرية"
+    builder: "Salma"
+    builder_socials: "@salma_designs"
+    description: "فيلا حديثة بتصميم بسيط، نوافذ زجاجية، وحوض سباحة."
+    category: "Modern"
+    image: "https://images.unsplash.com/photo-1564660434144-2b3a3e3a3a3a?w=800"
+    hours: 28
+    blocks_used: "~80,000"
+    download_url: ""
+    date: "2026-04-08"
 
-- id: arabic-palace
-  title: "قصر عربي تقليدي"
-  builder: "Yassine"
-  builder_socials: "@yassine_mc"
-  description: "قصر بأسلوب أندلسي مع أقواس وفسيفساء وحديقة مركزية."
-  category: "Cultural"
-  image: "https://images.unsplash.com/photo-1564660434144-2b3a3e3a3a3a?w=800"
-  hours: 60
-  blocks_used: "~200,000"
-  download_url: ""
-  date: "2026-03-22"
+  - id: arabic-palace
+    title: "قصر عربي تقليدي"
+    builder: "Yassine"
+    builder_socials: "@yassine_mc"
+    description: "قصر بأسلوب أندلسي مع أقواس وفسيفساء وحديقة مركزية."
+    category: "Cultural"
+    image: "https://images.unsplash.com/photo-1564660434144-2b3a3e3a3a3a?w=800"
+    hours: 60
+    blocks_used: "~200,000"
+    download_url: ""
+    date: "2026-03-22"
 
-- id: redstone-factory
-  title: "مصنع Redstone أوتوماتيكي"
-  builder: "Karim"
-  builder_socials: "@karim_redstone"
-  description: "مصنع كامل يستخرج وينظم الموارد بدون تدخل اللاعب."
-  category: "Redstone"
-  image: "https://images.unsplash.com/photo-1564660434144-2b3a3e3a3a3a?w=800"
-  hours: 50
-  blocks_used: "~120,000"
-  download_url: ""
-  date: "2026-03-10"
+  - id: redstone-factory
+    title: "مصنع Redstone أوتوماتيكي"
+    builder: "Karim"
+    builder_socials: "@karim_redstone"
+    description: "مصنع كامل يستخرج وينظم الموارد بدون تدخل اللاعب."
+    category: "Redstone"
+    image: "https://images.unsplash.com/photo-1564660434144-2b3a3e3a3a3a?w=800"
+    hours: 50
+    blocks_used: "~120,000"
+    download_url: ""
+    date: "2026-03-10"
 
-- id: japanese-village
-  title: "قرية يابانية"
-  builder: "Reda"
-  builder_socials: "@reda_builds"
-  description: "قرية يابانية تقليدية مع معبد وأشجار كرز."
-  category: "Cultural"
-  image: "https://images.unsplash.com/photo-1564660434144-2b3a3e3a3a3a?w=800"
-  hours: 35
-  blocks_used: "~95,000"
-  download_url: ""
-  date: "2026-02-28"
+  - id: japanese-village
+    title: "قرية يابانية"
+    builder: "Reda"
+    builder_socials: "@reda_builds"
+    description: "قرية يابانية تقليدية مع معبد وأشجار كرز."
+    category: "Cultural"
+    image: "https://images.unsplash.com/photo-1564660434144-2b3a3e3a3a3a?w=800"
+    hours: 35
+    blocks_used: "~95,000"
+    download_url: ""
+    date: "2026-02-28"
 
 submission:
   title: "أرسل بناءك الخاص"
