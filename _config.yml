@@ -119,7 +119,7 @@ themes:
     accent: "#7c3aed" # Royal Purple
 
   monetization:
-    provider: "adsterra" # Options: monetag, adsterra, none
+    provider: "none" # Options: monetag, adsterra, none
     adsterra:
       social_bar: |
         <script src="https://pl29295838.profitablecpmratenetwork.com/37/f6/45/37f645712c080bfa0a69d29005885e24.js"></script>

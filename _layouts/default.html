@@ -56,23 +56,27 @@
 
   {% include header.html %}
 
-   <!-- Top Leaderboard Ad -->
-   <div class="container mx-auto px-4 mt-4 flex justify-center">
-     <div class="w-full max-w-4xl bg-black/40 rounded-xl overflow-hidden border border-white/5 shadow-lg min-h-[90px] flex items-center justify-center">
-       {% include ad-slot.html zone="leaderboard_top" %}
-     </div>
-   </div>
+  {% if site.themes.monetization.provider != "none" %}
+  <!-- Top Leaderboard Ad -->
+  <div class="container mx-auto px-4 mt-4 flex justify-center">
+    <div class="w-full max-w-4xl bg-black/40 rounded-xl overflow-hidden border border-white/5 shadow-lg min-h-[90px] flex items-center justify-center">
+      {% include ad-slot.html zone="leaderboard_top" %}
+    </div>
+  </div>
+  {% endif %}
 
    <main class="container mx-auto px-4 py-8">
      {{ content }}
    </main>
 
-   <!-- Mid-page Ad (after content) -->
-   <div class="container mx-auto px-4 mt-8 flex justify-center">
-     <div class="w-full max-w-4xl bg-black/40 rounded-xl overflow-hidden border border-white/5 shadow-lg min-h-[250px] flex items-center justify-center">
-       {% include ad-slot.html zone="in_content_after" %}
-     </div>
-   </div>
+  {% if site.themes.monetization.provider != "none" %}
+  <!-- Mid-page Ad (after content) -->
+  <div class="container mx-auto px-4 mt-8 flex justify-center">
+    <div class="w-full max-w-4xl bg-black/40 rounded-xl overflow-hidden border border-white/5 shadow-lg min-h-[250px] flex items-center justify-center">
+      {% include ad-slot.html zone="in_content_after" %}
+    </div>
+  </div>
+  {% endif %}
 
    {% include footer.html %}
 
