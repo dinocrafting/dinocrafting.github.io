@@ -1,0 +1,48 @@
+---
+layout: default
+title: Status | Dino Crafting
+description: Live public status for Dino Crafting website data and integrations.
+permalink: /status/
+lang: ma
+---
+
+<section class="py-16">
+  <div class="max-w-5xl mx-auto px-6">
+    <h1 class="text-5xl font-black text-white mb-4 uppercase italic">Dino Status</h1>
+    <p class="text-gray-400 mb-10">Public health dashboard for data freshness and integrations.</p>
+
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+      <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+        <div class="text-gray-500 text-xs uppercase tracking-widest mb-2">Stats Version</div>
+        <div id="status-version" class="text-2xl font-black text-white">--</div>
+      </div>
+      <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+        <div class="text-gray-500 text-xs uppercase tracking-widest mb-2">Generated At</div>
+        <div id="status-generated" class="text-2xl font-black text-white">--</div>
+      </div>
+    </div>
+
+    <div class="p-6 rounded-2xl bg-white/5 border border-white/10 mb-8">
+      <div class="text-gray-500 text-xs uppercase tracking-widest mb-4">Health</div>
+      <div class="grid sm:grid-cols-3 gap-4">
+        <div class="p-4 rounded-xl bg-black/30 border border-white/10">
+          <div class="text-gray-500 text-xs">Age (minutes)</div>
+          <div id="status-age" class="text-xl text-white font-black">--</div>
+        </div>
+        <div class="p-4 rounded-xl bg-black/30 border border-white/10">
+          <div class="text-gray-500 text-xs">Stale After</div>
+          <div id="status-stale-after" class="text-xl text-white font-black">--</div>
+        </div>
+        <div class="p-4 rounded-xl bg-black/30 border border-white/10">
+          <div class="text-gray-500 text-xs">State</div>
+          <div id="status-state" class="text-xl text-white font-black">--</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+      <div class="text-gray-500 text-xs uppercase tracking-widest mb-4">Sources Reliability</div>
+      <div id="status-sources" class="grid md:grid-cols-2 gap-4"></div>
+    </div>
+  </div>
+</section>

@@ -40,13 +40,7 @@
    {% endif %}
   
   {% seo %}
-  <script>
-    window.SITE_I18N = {
-      ma: {{ site.data.i18n.ma.ui | jsonify }},
-      en: {{ site.data.i18n.en.ui | jsonify }},
-      fr: {{ site.data.i18n.fr.ui | jsonify }}
-    };
-  </script>
+  <script id="site-i18n" type="application/json">{{ site.data.i18n | jsonify }}</script>
 
   <style>
     :root {
@@ -153,5 +147,6 @@
   <script src="{{ '/assets/js/ads-lazy.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/i18n-ui.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/live-data.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/status-page.js' | relative_url }}"></script>
 </body>
 </html>

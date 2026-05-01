@@ -44,8 +44,27 @@ async function fetchText(url) {
 
 async function main() {
   const now = new Date().toISOString();
-  const stats = {
+  const nowMs = Date.now();
+  const staleAfterMinutes = 90;
+  const health = {
     generated_at: now,
+    next_refresh_minutes: 30,
+    stale_after_minutes: staleAfterMinutes,
+    age_minutes: 0,
+    is_stale: false
+  };
+
+  const stats = {
+    stats_version: "2.1.0",
+    health,
+    generated_at: now,
+    sources: {
+      youtube_badges: "unavailable",
+      youtube_feed: "unavailable",
+      discord_widget: "unavailable",
+      modrinth_api: "unavailable",
+      blogger_feed: "unavailable"
+    },
     youtube: { subscribers: null, views: null, latest_video: null },
     discord: { members_online: null, members_total: null },
     modrinth: { flowinventory_downloads: null, flowinventory_followers: null, status: "under_review" },
@@ -56,10 +75,12 @@ async function main() {
   try {
     const subs = await fetchJson(`https://img.shields.io/youtube/channel/subscribers/${channelId}.json`);
     stats.youtube.subscribers = (subs.value || "").replace(/\s*subscribers$/i, "").trim();
+    stats.sources.youtube_badges = "live";
   } catch {}
   try {
     const views = await fetchJson(`https://img.shields.io/youtube/channel/views/${channelId}.json`);
     stats.youtube.views = (views.value || "").replace(/\s*views$/i, "").trim();
+    stats.sources.youtube_badges = "live";
   } catch {}
   try {
     const ytxml = await fetchText(youtubeFeed);
@@ -77,6 +98,7 @@ async function main() {
           thumbnail: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
           published_at: published
         };
+        stats.sources.youtube_feed = "live";
       }
     }
   } catch {}
@@ -86,6 +108,7 @@ async function main() {
     const discord = await fetchJson(`https://discord.com/api/guilds/${discordServerId}/widget.json`);
     stats.discord.members_online = discord.presence_count ?? null;
     stats.discord.members_total = Array.isArray(discord.members) ? discord.members.length : null;
+    stats.sources.discord_widget = "live";
   } catch {}
 
   // Modrinth project
@@ -93,6 +116,7 @@ async function main() {
     const project = await fetchJson(`https://api.modrinth.com/v2/project/${modrinthProject}`);
     stats.modrinth.flowinventory_downloads = project.downloads ?? null;
     stats.modrinth.flowinventory_followers = project.followers ?? null;
+    stats.sources.modrinth_api = "live";
   } catch {}
 
   // Blogger feed for native news cache
@@ -132,7 +156,11 @@ async function main() {
     stats.news.featured = posts[0] || null;
     stats.news.trending_labels = trending;
     stats.news.posts = posts.slice(0, 20);
+    stats.sources.blogger_feed = "live";
   } catch {}
+
+  health.age_minutes = Math.floor((Date.now() - nowMs) / 60000);
+  health.is_stale = health.age_minutes > staleAfterMinutes;
 
   await fs.mkdir(outDir, { recursive: true });
   const payload = JSON.stringify(stats, null, 2);

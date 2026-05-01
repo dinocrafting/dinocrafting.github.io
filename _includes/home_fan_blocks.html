@@ -1,6 +1,9 @@
 <section class="grid lg:grid-cols-2 gap-8">
   <article class="p-8 rounded-[2.5rem] bg-white/5 border border-white/10">
-    <h3 class="text-2xl font-black text-white mb-4" data-i18n="latest_upload_title">Latest Upload</h3>
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-2xl font-black text-white" data-i18n="latest_upload_title">Latest Upload</h3>
+      <span data-source-badge="youtube_feed" class="px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-white/10 text-gray-300">cached</span>
+    </div>
     <a data-latest-video-link href="{{ site.youtube.url }}" target="_blank" class="block">
       <img data-latest-video-thumb src="https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="Latest upload thumbnail" class="w-full aspect-video object-cover rounded-2xl border border-white/10 mb-4">
       <h4 data-latest-video-title class="text-white font-bold text-lg line-clamp-2">Loading latest video...</h4>
@@ -9,7 +12,10 @@
   </article>
 
   <article class="p-8 rounded-[2.5rem] bg-white/5 border border-white/10">
-    <h3 class="text-2xl font-black text-white mb-4" data-i18n="flow_timeline_title">FlowInventory Timeline</h3>
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-2xl font-black text-white" data-i18n="flow_timeline_title">FlowInventory Timeline</h3>
+      <span data-source-badge="modrinth_api" class="px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-white/10 text-gray-300">cached</span>
+    </div>
     <div class="space-y-4 text-sm">
       <div class="flex items-start gap-3">
         <span class="mt-1 w-2.5 h-2.5 rounded-full bg-moroccangreen"></span>
@@ -30,4 +36,28 @@
       <span class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-gray-300 font-bold">Downloads: <span data-stat="flowinventory-downloads">--</span></span>
     </div>
   </article>
+</section>
+
+<section class="mt-8 p-8 rounded-[2.5rem] bg-white/5 border border-white/10">
+  <div class="flex items-center justify-between mb-6">
+    <h3 class="text-2xl font-black text-white">Fan Profile Card</h3>
+    <span data-source-badge="blogger_feed" class="px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-white/10 text-gray-300">cached</span>
+  </div>
+  <div class="grid lg:grid-cols-3 gap-6">
+    <div class="lg:col-span-1 p-6 rounded-2xl bg-black/30 border border-white/10">
+      <h4 class="text-white font-black text-lg mb-4">Top Links</h4>
+      <div class="flex flex-col gap-2 text-sm">
+        <a href="{{ site.youtube.url }}" target="_blank" class="text-gray-300 hover:text-white">YouTube</a>
+        <a href="{{ site.discord.invite }}" target="_blank" class="text-gray-300 hover:text-white">Discord</a>
+        <a href="{{ site.modrinth.flowinventory }}" target="_blank" class="text-gray-300 hover:text-white">FlowInventory (Modrinth)</a>
+        <a href="{{ site.github.flowinventory }}" target="_blank" class="text-gray-300 hover:text-white">FlowInventory (GitHub)</a>
+      </div>
+    </div>
+    <div class="lg:col-span-2 p-6 rounded-2xl bg-black/30 border border-white/10">
+      <h4 class="text-white font-black text-lg mb-4">Latest 3 Content Items</h4>
+      <div id="fan-latest-posts" class="grid md:grid-cols-3 gap-4">
+        <div class="p-4 rounded-xl bg-white/5 text-gray-400 text-sm">Loading...</div>
+      </div>
+    </div>
+  </div>
 </section>
