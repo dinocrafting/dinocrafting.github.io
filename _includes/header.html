@@ -1,28 +1,8 @@
 <header class="sticky top-0 z-50 bg-white/80 dark:bg-darkbg/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800"
-        x-data="{ 
-          mobileMenu: false,
-          holidayTheme: '',
-          
-          init() {
-            // Holiday Engine Logic
-            const now = new Date();
-            const year = now.getFullYear();
-            const holidays = [
-              { name: 'ramadan', start: new Date(year, 1, 18), end: new Date(year, 2, 19) },
-              { name: 'eid-fitr', start: new Date(year, 2, 20), end: new Date(year, 2, 22) },
-              { name: 'eid-adha', start: new Date(year, 4, 27), end: new Date(year, 4, 30) }
-            ];
-
-            const currentHoliday = holidays.find(h => now >= h.start && now <= h.end);
-            if (currentHoliday) {
-              this.holidayTheme = currentHoliday.name;
-              document.body.classList.add('theme-' + currentHoliday.name);
-            }
-          }
-        }">
+        x-data="{ mobileMenu: false }">
   <div class="container mx-auto px-4 h-20 flex items-center justify-between">
     <!-- Logo -->
-    <a href="/{{ lang }}/" class="flex items-center gap-3">
+    <a href="/" class="flex items-center gap-3">
       <div class="w-12 h-12 rounded-2xl bg-moroccangreen flex items-center justify-center text-white shadow-lg shadow-moroccangreen/20 overflow-hidden">
         <img src="{{ site.logo }}" class="w-full h-full object-cover" alt="Dino Crafting Logo">
       </div>
@@ -38,34 +18,35 @@
 
     <!-- Desktop Nav -->
     <nav class="hidden lg:flex items-center gap-8">
-      <a href="/{{ lang }}/mods/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">Mods</a>
-      <a href="/{{ lang }}/videos/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">Videos</a>
-      <a href="/{{ lang }}/community/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">Community</a>
-      <a href="/{{ lang }}/news/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">News</a>
-      <a href="/{{ lang }}/contact/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">Contact</a>
+      <a href="/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">Home</a>
+      <a href="/mods/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">Mods</a>
+      <a href="/videos/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">Videos</a>
+      <a href="/community/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">Community</a>
+      <a href="/news/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">News</a>
+      <a href="/about/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">About</a>
+      <a href="/contact/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">Contact</a>
     </nav>
 
     <!-- Actions -->
     <div class="flex items-center gap-4">
-      <!-- YouTube Subscriber Count -->
+      <!-- YouTube Subscriber Count (real value only, fallback 0) -->
       {% if site.youtube.channel_id %}
       <div class="hidden md:flex items-center gap-2 px-4 py-2 bg-red-600/10 border border-red-600/20 rounded-xl text-red-500 font-black text-xs">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-0.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        <span>350K+</span>
+        <span>{{ site.youtube.subscribers | default: 0 }}</span>
       </div>
       {% endif %}
 
       <!-- Language Switcher -->
       <div class="relative" x-data="{ open: false }">
         <button @click="open = !open" class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all uppercase font-black text-[10px] text-white">
-          <span>{{ lang }}</span>
+          <span id="current-language-label">{{ lang | upcase }}</span>
           <svg class="w-3 h-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
         </button>
         <div x-show="open" @click.away="open = false" class="absolute top-full right-0 mt-2 w-32 bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50">
-          {% assign page_path = page.url | remove_first: '/' | remove_first: 'ma/' | remove_first: 'en/' | remove_first: 'fr/' %}
-          <a href="/ma/{{ page_path }}" class="block px-4 py-3 text-[10px] font-black text-gray-400 hover:text-white hover:bg-white/5 transition-all">🇲🇦 DARIJA</a>
-          <a href="/en/{{ page_path }}" class="block px-4 py-3 text-[10px] font-black text-gray-400 hover:text-white hover:bg-white/5 transition-all">🇺🇸 ENGLISH</a>
-          <a href="/fr/{{ page_path }}" class="block px-4 py-3 text-[10px] font-black text-gray-400 hover:text-white hover:bg-white/5 transition-all">🇫🇷 FRENCH</a>
+          <a href="?lang=ma" class="block px-4 py-3 text-[10px] font-black text-gray-400 hover:text-white hover:bg-white/5 transition-all">🇲🇦 DARIJA</a>
+          <a href="?lang=en" class="block px-4 py-3 text-[10px] font-black text-gray-400 hover:text-white hover:bg-white/5 transition-all">🇺🇸 ENGLISH</a>
+          <a href="?lang=fr" class="block px-4 py-3 text-[10px] font-black text-gray-400 hover:text-white hover:bg-white/5 transition-all">🇫🇷 FRENCH</a>
         </div>
       </div>
 
@@ -82,13 +63,13 @@
     <!-- Mobile Menu Drawer -->
     <div x-show="mobileMenu" x-transition class="lg:hidden fixed inset-0 z-40 bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-center space-y-12">
       <nav class="flex flex-col items-center space-y-8">
-        <a @click="mobileMenu = false" href="/{{ lang }}/" class="text-4xl font-black text-white uppercase italic">{{ site.data.translations[lang].nav_home | default: 'Home' }}</a>
-        <a @click="mobileMenu = false" href="/{{ lang }}/mods/" class="text-4xl font-black text-white uppercase italic">{{ site.data.translations[lang].nav_mods }}</a>
-        <a @click="mobileMenu = false" href="/{{ lang }}/videos/" class="text-4xl font-black text-white uppercase italic">{{ site.data.translations[lang].nav_videos }}</a>
-        <a @click="mobileMenu = false" href="/{{ lang }}/community/" class="text-4xl font-black text-white uppercase italic">{{ site.data.translations[lang].nav_community }}</a>
-        <a @click="mobileMenu = false" href="/{{ lang }}/news/" class="text-4xl font-black text-white uppercase italic">{{ site.data.translations[lang].nav_news }}</a>
-        <a @click="mobileMenu = false" href="/{{ lang }}/contact/" class="text-4xl font-black text-white uppercase italic">{{ site.data.translations[lang].nav_contact }}</a>
+        <a @click="mobileMenu = false" href="/" class="text-4xl font-black text-white uppercase italic">Home</a>
+        <a @click="mobileMenu = false" href="/mods/" class="text-4xl font-black text-white uppercase italic">Mods</a>
+        <a @click="mobileMenu = false" href="/videos/" class="text-4xl font-black text-white uppercase italic">Videos</a>
+        <a @click="mobileMenu = false" href="/community/" class="text-4xl font-black text-white uppercase italic">Community</a>
+        <a @click="mobileMenu = false" href="/news/" class="text-4xl font-black text-white uppercase italic">News</a>
+        <a @click="mobileMenu = false" href="/about/" class="text-4xl font-black text-white uppercase italic">About</a>
+        <a @click="mobileMenu = false" href="/contact/" class="text-4xl font-black text-white uppercase italic">Contact</a>
       </nav>
     </div>
-  </div>
 </header>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% assign lang = page.lang | default: site.default_lang %}
+{% assign lang = page.lang | default: site.lang %}
 {% assign locale = site.data.locales[lang] %}
 <html lang="{{ lang }}" {% if lang == 'ar' or lang == 'ma' %}dir="rtl"{% else %}dir="ltr"{% endif %} x-data="{ darkMode: localStorage.getItem('darkMode') === 'true', arabiziMode: localStorage.getItem('arabiziMode') === 'true' }" :class="{ 'dark': darkMode }">
 <head>
@@ -131,8 +131,8 @@
                 <h3 class="text-xl font-bold text-white mb-3 line-clamp-2 group-hover:text-moroccangreen transition-colors">${post.title}</h3>
                 <p class="text-gray-400 text-sm line-clamp-3">${post.content.replace(/<[^>]*>/g, '').substring(0, 150)}...</p>
               </div>
-              <a href="${post.url}" target="_blank" class="inline-flex items-center gap-2 text-orange-500 font-bold text-sm uppercase tracking-widest group-hover:gap-3 transition-all">
-                Read Full Article
+              <a href="/news/" class="inline-flex items-center gap-2 text-orange-500 font-bold text-sm uppercase tracking-widest group-hover:gap-3 transition-all">
+                Read on Dino Crafting
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
               </a>
             </article>
@@ -142,7 +142,7 @@
         console.error('Failed to load Blogger feed:', error);
         blogContainer.innerHTML = `
           <div class="col-span-3 text-center py-12">
-            <p class="text-gray-400">Unable to load blog posts. <a href="{{ site.blogger }}" target="_blank" class="text-orange-500">Visit blog directly</a>.</p>
+            <p class="text-gray-400">Unable to load blog posts right now.</p>
           </div>
         `;
       }
@@ -169,6 +169,29 @@
       if (localStorage.getItem('darkMode') === null) {
         localStorage.setItem('darkMode', window.matchMedia('(prefers-color-scheme: dark)').matches);
       }
+
+      // Global language preference (single-page structure helper)
+      const params = new URLSearchParams(window.location.search);
+      const requestedLang = params.get('lang');
+      const savedLang = localStorage.getItem('preferredLang');
+      const activeLang = ['ma', 'en', 'fr'].includes(requestedLang)
+        ? requestedLang
+        : (['ma', 'en', 'fr'].includes(savedLang) ? savedLang : '{{ lang }}');
+
+      localStorage.setItem('preferredLang', activeLang);
+      document.documentElement.lang = activeLang;
+      document.documentElement.dir = activeLang === 'ma' ? 'rtl' : 'ltr';
+
+      const languageLabel = document.getElementById('current-language-label');
+      if (languageLabel) languageLabel.textContent = activeLang.toUpperCase();
+
+      // Keep selected language when navigating internal pages.
+      document.querySelectorAll('a[href^="/"]').forEach((link) => {
+        if (link.getAttribute('href').startsWith('//')) return;
+        const url = new URL(link.href, window.location.origin);
+        url.searchParams.set('lang', activeLang);
+        link.href = url.pathname + url.search + url.hash;
+      });
     });
   </script>
 </body>

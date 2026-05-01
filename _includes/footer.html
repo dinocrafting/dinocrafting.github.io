@@ -1,51 +1,28 @@
 <footer class="bg-white dark:bg-darkcard border-t border-gray-200 dark:border-gray-800 py-12">
   <div class="container mx-auto px-4">
-   <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-      <div>
-        <span class="text-2xl font-bold bg-gradient-to-r from-moroccangreen to-moroccanred bg-clip-text text-transparent">Dinocrafting</span>
-        <p class="mt-2 text-gray-500 max-w-xs">{{ site.data.locales[lang].hero.subtitle }}</p>
+    <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="text-center md:text-left">
+        <span class="text-2xl font-bold bg-gradient-to-r from-moroccangreen to-moroccanred bg-clip-text text-transparent">
+          Dino Crafting
+        </span>
+        <p class="mt-2 text-gray-500 max-w-xs">
+          Minecraft content by Dino Crafting for the community.
+        </p>
       </div>
-      <div class="flex flex-col items-center md:items-end gap-4">
-        <div class="flex gap-6 text-sm font-medium">
-          <a href="/{{ lang }}/terms/" class="hover:text-moroccangreen transition-colors">{{ site.data.locales[lang].footer.terms }}</a>
-          <a href="/{{ lang }}/privacy/" class="hover:text-moroccangreen transition-colors">{{ site.data.locales[lang].footer.privacy }}</a>
-          <a href="{{ site.youtube.url }}" target="_blank" class="hover:text-red-500 transition-colors">YouTube</a>
-          <a href="{{ site.discord.invite }}" target="_blank" class="hover:text-indigo-500 transition-colors">Discord</a>
-          <a href="{{ site.kofi }}" target="_blank" class="hover:text-pink-400 transition-colors">Ko-fi</a>
-        </div>
-        <div class="text-xs text-gray-600">
-          &copy; {{ "now" | date: "%Y" }} Dino Crafting. {{ site.data.locales[lang].footer.rights }}
-        </div>
-      </div>
-    </div>
-      <div class="flex flex-col items-center md:items-end gap-4">
-        <div class="flex gap-6 text-sm font-medium">
-          <a href="{{ site.youtube.url }}" target="_blank" class="hover:text-red-500 transition-colors flex items-center gap-2">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-0.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            YouTube
-          </a>
-          <a href="{{ site.instagram }}" target="_blank" class="hover:text-pink-500 transition-colors">Instagram</a>
-          <a href="{{ site.discord }}" target="_blank" class="hover:text-indigo-500 transition-colors">Discord</a>
-        </div>
-        <div class="flex gap-8 text-sm font-medium">
-          <a href="/{{ lang }}/contact/" class="hover:text-moroccangreen transition-colors">{{ site.data.locales[lang].footer.privacy }}</a>
-          <a href="/{{ lang }}/about/" class="hover:text-moroccangreen transition-colors">About</a>
-        </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm font-medium">
+        <a href="/terms/" class="hover:text-moroccangreen transition-colors">Terms</a>
+        <a href="/privacy/" class="hover:text-moroccangreen transition-colors">Privacy</a>
+        <a href="/about/" class="hover:text-moroccangreen transition-colors">About</a>
+        <a href="/contact/" class="hover:text-moroccangreen transition-colors">Contact</a>
+        <a href="{{ site.youtube.url }}" target="_blank" class="hover:text-red-500 transition-colors">YouTube</a>
+        <a href="{{ site.discord.invite }}" target="_blank" class="hover:text-indigo-500 transition-colors">Discord</a>
+        <a href="{{ site.kofi }}" target="_blank" class="hover:text-pink-400 transition-colors">Ko-fi</a>
       </div>
     </div>
-    <div class="mt-12 pt-8 border-t border-gray-100 dark:border-gray-800 text-center text-gray-500 text-xs">
-      &copy; {{ "now" | date: "%Y" }} Dinocrafting. {{ site.data.locales[lang].footer.rights }}
-    </div>
-    <!-- Community Safety -->
-    <div class="mt-12 pt-8 border-t border-white/5 flex flex-wrap justify-center items-center gap-6 opacity-40 grayscale hover:grayscale-0 transition-all">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded bg-green-500/20 text-green-500 flex items-center justify-center font-bold text-xs">FS</div>
-        <span class="text-[10px] uppercase tracking-widest font-bold">Family Safe Content</span>
-      </div>
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded bg-moroccangreen/20 text-moroccangreen flex items-center justify-center font-bold text-xs italic">7+</div>
-        <span class="text-[10px] uppercase tracking-widest font-bold">Community Rated</span>
-      </div>
+
+    <div class="mt-10 pt-8 border-t border-gray-100 dark:border-gray-800 text-center text-gray-500 text-xs">
+      &copy; {{ "now" | date: "%Y" }} Dino Crafting. All rights reserved.
     </div>
   </div>
 </footer>

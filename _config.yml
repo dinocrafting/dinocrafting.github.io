@@ -20,6 +20,7 @@ youtube:
   url: "https://www.youtube.com/@Dinocrafting"
   studio: "https://studio.youtube.com/channel/UCboeGauwIyfDKiYDhhTHgyA"
   playlist: "https://www.youtube.com/embed?listType=user_uploads&list=Dinocrafting"
+  subscribers: 0
 
 twitter:
   username: "dinoo_crafting"
@@ -60,7 +61,7 @@ blogger: "https://dinocrafting9988.blogspot.com/"
 
 linkedin: "https://www.linkedin.com/abdelhakimbaalla"
 
-personal_site: "baalla.tech"
+personal_site: "https://baalla.tech"
 
 # Community Platforms
 minecraft_platforms:
