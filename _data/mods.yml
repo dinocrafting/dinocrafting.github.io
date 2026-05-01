@@ -1,0 +1,13 @@
+- slug: flowinventory
+  title: FlowInventory
+  description: مود ذكي لترتيب المخزون وإدارة الهوتبار تلقائياً داخل ماينكرافت.
+  image: https://media.forgecdn.net/avatars/591/10/637841050000000000.png
+  category: أدوات
+  version: "1.21+"
+  author: Dino Crafting
+  featured: true
+  github_url: "https://github.com/Abdelhakim-Baalla/flowinventory"
+  modrinth_url: "https://modrinth.com/mod/flowinventory"
+  curseforge_url: "https://www.curseforge.com/minecraft/mc-mods/flowinventory"
+  download_url: "https://www.curseforge.com/minecraft/mc-mods/flowinventory"
+  download_text: "تحميل من CurseForge"

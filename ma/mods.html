@@ -7,14 +7,19 @@ lang: ma
 ---
 
 {% assign t = site.data.i18n[page.lang].ui %}
+{% assign mods_data = site.data.mods | default: empty %}
 
 <div class="py-20" dir="rtl">
   <div class="max-w-6xl mx-auto px-6">
     {% include page_hero.html accent="moroccangreen" brand="DINO" title=t.hero_mods_title subtitle=t.hero_mods_subtitle %}
 
+     <div class="mb-8 p-4 rounded-2xl bg-moroccangreen/10 border border-moroccangreen/30 text-sm text-gray-300">
+      لإضافة مود جديد مستقبلاً: عدّل فقط ملف <code class="bg-black/40 px-2 py-1 rounded">_data/mods.yml</code> بدون تعديل كود الصفحة.
+     </div>
+
      <!-- شبكة المودات -->
      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-       {% for mod in site.mods %}
+       {% for mod in mods_data %}
        <article class="group rounded-[3rem] bg-white/5 border border-white/10 overflow-hidden hover:border-moroccangreen/30 transition-all duration-300">
          <!-- صورة المود -->
          <div class="relative h-48 bg-gradient-to-br from-moroccangreen/20 to-black overflow-hidden">
@@ -55,10 +60,10 @@ lang: ma
              {% endif %}
            </div>
 
-           <a href="{{ mod.download_url | default: '#' }}" 
+          <a href="{{ mod.download_url | default: mod.curseforge_url | default: '#' }}" 
               target="_blank" 
              class="block w-full py-3 bg-moroccangreen hover:bg-moroccangreen/80 text-white font-bold rounded-xl text-center uppercase tracking-widest transition-all mb-2"
-             {% unless mod.download_url %}onclick="alert('قريباً!')"{% endunless %}>
+             {% unless mod.download_url or mod.curseforge_url %}onclick="alert('قريباً!')"{% endunless %}>
              🚀 {{ mod.download_text | default: 'تحميل من CurseForge' }}
            </a>
            
@@ -73,7 +78,7 @@ lang: ma
      </div>
 
     <!-- حالة عدم وجود مودات -->
-    {% if site.mods.size == 0 %}
+    {% if mods_data.size == 0 %}
     <div class="text-center py-20">
       <div class="text-6xl mb-6">🔨</div>
       <h2 class="text-3xl font-black text-white mb-4">المودات قريبة!</h2>
@@ -89,3 +94,21 @@ lang: ma
     </div>
   </div>
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "مودات Dino Crafting",
+  "itemListElement": [
+    {% for mod in mods_data %}
+    {
+      "@type": "ListItem",
+      "position": {{ forloop.index }},
+      "name": "{{ mod.title | escape }}",
+      "url": "{{ mod.download_url | default: mod.curseforge_url | default: site.url | append: '/mods/' }}"
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>

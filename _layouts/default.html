@@ -41,6 +41,39 @@
    {% endif %}
   
   {% seo %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ site.title | default: 'Dino Crafting' | escape }}",
+    "url": "{{ site.url }}",
+    "logo": "{{ site.url }}{{ site.logo }}",
+    "email": "{{ site.email }}",
+    "sameAs": [
+      "{{ site.youtube.url }}",
+      "{{ site.discord.invite }}",
+      "{{ site.twitter.url }}",
+      "{{ site.instagram }}",
+      "{{ site.tiktok.url }}",
+      "{{ site.bluesky.url }}",
+      "{{ site.github.profile }}"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ site.title | default: 'Dino Crafting' | escape }}",
+    "url": "{{ site.url }}",
+    "inLanguage": "ar",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "{{ site.url }}/news/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
   <style>
     :root {
       --ramadan-color: {{ site.themes.ramadan.color | default: '#10b981' }};
