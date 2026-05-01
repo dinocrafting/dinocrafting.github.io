@@ -5,6 +5,7 @@ description: أحدث أخبار Dino Crafting - تحديثات المودات،
 permalink: /news/
 lang: ma
 ---
+{% assign news_seed = site.data.news | default: empty %}
 
 <div class="py-20" dir="rtl">
   <div class="max-w-6xl mx-auto px-6">
@@ -54,129 +55,181 @@ lang: ma
   </div>
 </div>
 
+<script id="news-seed-data" type="application/json">{{ news_seed | jsonify }}</script>
 <script>
-  async function loadNewsPosts() {
+  function mapNewsPayload(newsPayload) {
+    const posts = (newsPayload?.posts || []).map((entry) => {
+      const date = new Date(entry.published_at);
+      const formattedDate = isNaN(date.getTime())
+        ? (entry.published_at || '')
+        : date.toLocaleDateString('ar-MA', { year: 'numeric', month: 'long', day: 'numeric' });
+
+      return {
+        title: entry.title || 'بدون عنوان',
+        content: entry.excerpt || '',
+        date: formattedDate,
+        categories: entry.labels || [],
+        normalizedCategories: [entry.category || 'blogs'],
+        image: entry.image || '',
+        url: entry.url || '#'
+      };
+    });
+
+    return {
+      posts,
+      featured: newsPayload?.featured || null,
+      trendingLabels: Array.isArray(newsPayload?.trending_labels) ? newsPayload.trending_labels : []
+    };
+  }
+
+  function loadSeedNews() {
+    try {
+      const seedElement = document.getElementById('news-seed-data');
+      if (!seedElement) return { posts: [], featured: null, trendingLabels: [] };
+      return mapNewsPayload(JSON.parse(seedElement.textContent || '{}'));
+    } catch (error) {
+      console.warn('Failed to parse local news seed:', error);
+      return { posts: [], featured: null, trendingLabels: [] };
+    }
+  }
+
+  function renderNewsPage(newsState) {
     const container = document.getElementById('news-container');
     const noPosts = document.getElementById('no-posts');
     const featuredEl = document.getElementById('news-featured');
     const searchInput = document.getElementById('news-search');
     const tagsEl = document.getElementById('trending-tags');
+    const entries = newsState.posts || [];
 
+    if (newsState.featured) {
+      featuredEl.innerHTML = `
+        <div class="p-8 rounded-[3rem] bg-white/5 border border-moroccangreen/30">
+          <div class="text-[10px] uppercase tracking-widest text-moroccangreen font-black mb-3">منشور مميز</div>
+          <h2 class="text-3xl font-black text-white mb-3">${newsState.featured.title || ''}</h2>
+          <p class="text-gray-400 mb-5">${newsState.featured.excerpt || ''}</p>
+          <a href="${newsState.featured.url || '#'}" target="_blank" class="inline-flex px-5 py-2 rounded-lg bg-moroccangreen text-white font-bold">افتح المقال الأصلي</a>
+        </div>
+      `;
+    } else {
+      featuredEl.innerHTML = '';
+    }
+
+    tagsEl.innerHTML = (newsState.trendingLabels || [])
+      .map((tag) => `<span class="px-3 py-1 rounded-full text-xs font-bold bg-white/5 border border-white/10 text-gray-300">#${tag}</span>`)
+      .join('');
+
+    const renderPosts = (posts) => {
+      container.innerHTML = posts.map((post, index) => {
+        const isFeatured = index === 0;
+        const layoutClass = isFeatured
+          ? 'col-span-full flex flex-col lg:flex-row gap-12 p-10 rounded-[4rem] bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all overflow-hidden'
+          : 'p-8 rounded-[3.5rem] bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all';
+        const imageClass = isFeatured
+          ? 'w-full lg:w-[450px] aspect-video lg:aspect-square rounded-[3rem] overflow-hidden flex-shrink-0 border border-white/5 shadow-2xl'
+          : 'aspect-video rounded-[2.5rem] overflow-hidden mb-8 border border-white/5';
+        const titleClass = isFeatured ? 'text-5xl' : 'text-3xl';
+        const excerptClass = isFeatured ? 'text-xl' : 'text-base';
+
+        return `
+        <article class="${layoutClass}" data-index="${index}">
+          ${isFeatured ? '<div class="absolute -top-24 -right-24 w-96 h-96 bg-moroccangreen/5 blur-[120px] rounded-full"></div>' : ''}
+          <div class="${imageClass}">
+            ${post.image
+              ? `<img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">`
+              : `<div class="w-full h-full bg-gradient-to-br from-moroccangreen/20 to-black flex items-center justify-center text-6xl">📰</div>`
+            }
+          </div>
+          <div class="${isFeatured ? 'flex-1 flex flex-col justify-center' : ''}">
+            <div class="flex gap-4 mb-6 flex-wrap">
+              ${post.categories.length
+                ? post.categories.slice(0, 2).map((c) => `<span class="px-4 py-1 bg-moroccangreen/20 text-moroccangreen text-[10px] font-black rounded-full uppercase tracking-widest">${c}</span>`).join('')
+                : ''
+              }
+              <span class="text-gray-600 text-[10px] font-black uppercase tracking-widest">${post.date}</span>
+            </div>
+            <h2 class="${titleClass} font-black ${isFeatured ? 'text-white mb-8 group-hover:text-moroccangreen transition-colors leading-tight' : 'text-white mb-6 group-hover:text-moroccangreen transition-colors'}">${post.title}</h2>
+            <p class="text-gray-400 ${excerptClass} leading-relaxed">${post.content}...</p>
+            <a href="${post.url}" target="_blank" class="inline-flex mt-6 px-4 py-2 bg-white/10 border border-white/20 rounded-xl text-white font-bold hover:bg-white/20 transition-all w-fit">افتح المصدر</a>
+          </div>
+        </article>
+        `;
+      }).join('');
+    };
+
+    let activeFilter = 'all';
+    let searchTerm = '';
+    const recompute = () => {
+      let filtered = entries;
+      if (activeFilter !== 'all') filtered = filtered.filter((p) => p.normalizedCategories.includes(activeFilter));
+      if (searchTerm) filtered = filtered.filter((p) => `${p.title} ${p.content}`.toLowerCase().includes(searchTerm));
+      if (!filtered.length) {
+        container.innerHTML = '';
+        noPosts.classList.remove('hidden');
+      } else {
+        noPosts.classList.add('hidden');
+        renderPosts(filtered);
+      }
+    };
+
+    renderPosts(entries);
+    const filters = document.querySelectorAll('#news-filters button');
+    filters.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filters.forEach((b) => b.className = 'px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-black uppercase tracking-widest');
+        btn.className = 'px-4 py-2 rounded-full bg-moroccangreen text-white text-xs font-black uppercase tracking-widest';
+        activeFilter = btn.getAttribute('data-filter');
+        recompute();
+      });
+    });
+    searchInput.addEventListener('input', () => {
+      searchTerm = searchInput.value.trim().toLowerCase();
+      recompute();
+    });
+  }
+
+  async function loadNewsPosts() {
+    const seedNews = loadSeedNews();
     try {
       const response = await fetch('/api/stats.json', { cache: 'no-store' });
       const data = await response.json();
-      const entries = (data.news.posts || []).map((entry) => {
-        const date = new Date(entry.published_at);
-        const formattedDate = date.toLocaleDateString('ar-MA', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        });
-        return {
-          title: entry.title,
-          content: entry.excerpt,
-          date: formattedDate,
-          categories: entry.labels || [],
-          normalizedCategories: [entry.category || 'blogs'],
-          image: entry.image || '',
-          url: entry.url || '#'
-        };
-      });
-
-      if (data.news.featured) {
-        featuredEl.innerHTML = `
-          <div class="p-8 rounded-[3rem] bg-white/5 border border-moroccangreen/30">
-            <div class="text-[10px] uppercase tracking-widest text-moroccangreen font-black mb-3">منشور مميز</div>
-            <h2 class="text-3xl font-black text-white mb-3">${data.news.featured.title}</h2>
-            <p class="text-gray-400 mb-5">${data.news.featured.excerpt || ''}</p>
-            <a href="${data.news.featured.url || '#'}" target="_blank" class="inline-flex px-5 py-2 rounded-lg bg-moroccangreen text-white font-bold">افتح المقال الأصلي</a>
-          </div>
-        `;
-      }
-
-      if (Array.isArray(data.news.trending_labels)) {
-        tagsEl.innerHTML = data.news.trending_labels.map((tag) => `<span class="px-3 py-1 rounded-full text-xs font-bold bg-white/5 border border-white/10 text-gray-300">#${tag}</span>`).join('');
-      }
-
-      const renderPosts = (posts) => {
-        container.innerHTML = posts.map((post, index) => {
-          const isFeatured = index === 0;
-          const layoutClass = isFeatured 
-            ? 'col-span-full flex flex-col lg:flex-row gap-12 p-10 rounded-[4rem] bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all overflow-hidden'
-            : 'p-8 rounded-[3.5rem] bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all';
-          const imageClass = isFeatured 
-            ? 'w-full lg:w-[450px] aspect-video lg:aspect-square rounded-[3rem] overflow-hidden flex-shrink-0 border border-white/5 shadow-2xl'
-            : 'aspect-video rounded-[2.5rem] overflow-hidden mb-8 border border-white/5';
-          const titleClass = isFeatured ? 'text-5xl' : 'text-3xl';
-          const excerptClass = isFeatured ? 'text-xl' : 'text-base';
-          
-          return `
-          <article class="${layoutClass}" data-index="${index}">
-            ${isFeatured ? '<div class="absolute -top-24 -right-24 w-96 h-96 bg-moroccangreen/5 blur-[120px] rounded-full"></div>' : ''}
-            <div class="${imageClass}">
-              ${post.image 
-                ? `<img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">`
-                : `<div class="w-full h-full bg-gradient-to-br from-moroccangreen/20 to-black flex items-center justify-center text-6xl">📰</div>`
-              }
-            </div>
-            <div class="${isFeatured ? 'flex-1 flex flex-col justify-center' : ''}">
-              <div class="flex gap-4 mb-6 flex-wrap">
-                ${post.categories.length 
-                  ? post.categories.slice(0, 2).map(c => 
-                      `<span class="px-4 py-1 bg-moroccangreen/20 text-moroccangreen text-[10px] font-black rounded-full uppercase tracking-widest">${c}</span>`
-                    ).join('')
-                  : ''
-                }
-                <span class="text-gray-600 text-[10px] font-black uppercase tracking-widest">${post.date}</span>
-              </div>
-              <h2 class="${titleClass} font-black ${isFeatured ? 'text-white mb-8 group-hover:text-moroccangreen transition-colors leading-tight' : 'text-white mb-6 group-hover:text-moroccangreen transition-colors'}">${post.title}</h2>
-              <p class="text-gray-400 ${excerptClass} leading-relaxed">${post.content}...</p>
-              <a href="${post.url}" target="_blank" class="inline-flex mt-6 px-4 py-2 bg-white/10 border border-white/20 rounded-xl text-white font-bold hover:bg-white/20 transition-all w-fit">افتح المصدر</a>
-            </div>
-          </article>
-          `;
-        }).join('');
-      };
-
-      let activeFilter = 'all';
-      let searchTerm = '';
-      const recompute = () => {
-        let filtered = entries;
-        if (activeFilter !== 'all') filtered = filtered.filter((p) => p.normalizedCategories.includes(activeFilter));
-        if (searchTerm) filtered = filtered.filter((p) => `${p.title} ${p.content}`.toLowerCase().includes(searchTerm));
-        if (!filtered.length) {
-          container.innerHTML = '';
-          noPosts.classList.remove('hidden');
-        } else {
-          noPosts.classList.add('hidden');
-          renderPosts(filtered);
-        }
-      };
-
-      renderPosts(entries);
-      const filters = document.querySelectorAll('#news-filters button');
-      filters.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          filters.forEach((b) => b.className = 'px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-black uppercase tracking-widest');
-          btn.className = 'px-4 py-2 rounded-full bg-moroccangreen text-white text-xs font-black uppercase tracking-widest';
-          activeFilter = btn.getAttribute('data-filter');
-          recompute();
-        });
-      });
-      searchInput.addEventListener('input', () => {
-        searchTerm = searchInput.value.trim().toLowerCase();
-        recompute();
+      const liveNews = mapNewsPayload(data.news || {});
+      renderNewsPage({
+        posts: liveNews.posts.length ? liveNews.posts : seedNews.posts,
+        featured: liveNews.featured || seedNews.featured,
+        trendingLabels: liveNews.trendingLabels.length ? liveNews.trendingLabels : seedNews.trendingLabels
       });
     } catch (error) {
       console.error('Failed to load cached news feed:', error);
-      container.innerHTML = `
-        <div class="col-span-full text-center py-20">
-          <p class="text-red-500">تعذر تحميل الأخبار. حاول مرة أخرى لاحقاً.</p>
-        </div>
-      `;
-      noPosts.classList.remove('hidden');
+      if (seedNews.posts.length) {
+        renderNewsPage(seedNews);
+      } else {
+        document.getElementById('news-container').innerHTML = `
+          <div class="col-span-full text-center py-20">
+            <p class="text-red-500">تعذر تحميل الأخبار. حاول مرة أخرى لاحقاً.</p>
+          </div>
+        `;
+        document.getElementById('no-posts').classList.remove('hidden');
+      }
     }
   }
 
   document.addEventListener('DOMContentLoaded', loadNewsPosts);
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "آخر أخبار Dino Crafting",
+  "itemListElement": [
+    {% for post in news_seed.posts limit:10 %}
+    {
+      "@type": "ListItem",
+      "position": {{ forloop.index }},
+      "name": "{{ post.title | escape }}",
+      "url": "{{ post.url }}"
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
 </script>
