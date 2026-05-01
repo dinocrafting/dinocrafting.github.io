@@ -1,0 +1,44 @@
+---
+layout: default
+title: SEO Content Clusters
+description: بنية متقدمة لكلاسترات محتوى Dino Crafting مع الكلمات المفتاحية والروابط الداخلية.
+permalink: /seo-clusters/
+lang: ma
+---
+
+{% assign data = site.data.seo_clusters.clusters %}
+
+<section class="py-16" dir="rtl">
+  <div class="max-w-6xl mx-auto px-6">
+    <h1 class="text-5xl font-black text-white mb-4">SEO Content Clusters</h1>
+    <p class="text-gray-400 mb-10">بنية احترافية لترتيب المحتوى، توزيع الكلمات المفتاحية، وتقوية الربط الداخلي.</p>
+
+    <div class="grid lg:grid-cols-2 gap-6">
+      {% for cluster in data %}
+      <article class="p-8 rounded-2xl bg-white/5 border border-white/10">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-2xl font-black text-white">{{ cluster.title }}</h2>
+          <a href="{{ cluster.slug }}" class="text-moroccangreen font-bold text-sm">فتح صفحة الكلاستر</a>
+        </div>
+        <p class="text-gray-400 mb-4">{{ cluster.intent }}</p>
+        <div class="mb-4">
+          <div class="text-xs text-gray-500 mb-2">الكلمات المفتاحية المستهدفة</div>
+          <div class="flex flex-wrap gap-2">
+            {% for keyword in cluster.keywords %}
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-200 text-xs">{{ keyword }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        <div>
+          <div class="text-xs text-gray-500 mb-2">روابط داخلية داعمة</div>
+          <div class="flex flex-wrap gap-2">
+            {% for link in cluster.links %}
+            <a href="{{ link }}" class="px-3 py-1 rounded-full bg-moroccangreen/20 text-moroccangreen text-xs">{{ link }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+# Dino Crafting
+
+Official website for Dino Crafting (Minecraft content, mods, news, and community).
+
+## Important URLs
+- https://dinocrafting.github.io/
+- https://dinocrafting.github.io/mods/
+- https://dinocrafting.github.io/videos/
+- https://dinocrafting.github.io/community/
+- https://dinocrafting.github.io/news/
+- https://dinocrafting.github.io/theories/
+- https://dinocrafting.github.io/site-map/
+- https://dinocrafting.github.io/seo-clusters/
+
+## SEO Cluster URLs
+- https://dinocrafting.github.io/minecraft-mods/
+- https://dinocrafting.github.io/minecraft-guides/
+- https://dinocrafting.github.io/minecraft-theories/
+- https://dinocrafting.github.io/minecraft-news/
