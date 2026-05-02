@@ -1,16 +1,16 @@
 {
   "stats_version": "2.1.0",
   "health": {
-    "generated_at": "2026-05-02T06:54:57.003Z",
+    "generated_at": "2026-05-02T08:16:13.964Z",
     "next_refresh_minutes": 30,
     "stale_after_minutes": 90,
     "age_minutes": 0,
     "is_stale": false
   },
-  "generated_at": "2026-05-02T06:54:57.003Z",
+  "generated_at": "2026-05-02T08:16:13.964Z",
   "sources": {
     "youtube_badges": "live",
-    "youtube_feed": "unavailable",
+    "youtube_feed": "live",
     "discord_widget": "unavailable",
     "modrinth_api": "unavailable",
     "blogger_feed": "live"
@@ -18,7 +18,13 @@
   "youtube": {
     "subscribers": "6.6k",
     "views": "2.1M",
-    "latest_video": null
+    "latest_video": {
+      "title": "لما تلعب ماينكرافت أول مرة 😂 #ماينكرافت #minecraft #shorts #gaming #minecraftmemes",
+      "video_id": "KbbyOkysLvc",
+      "url": "https://www.youtube.com/watch?v=KbbyOkysLvc",
+      "thumbnail": "https://i.ytimg.com/vi/KbbyOkysLvc/hqdefault.jpg",
+      "published_at": "2025-09-04T20:29:35+00:00"
+    }
   },
   "discord": {
     "members_online": null,
