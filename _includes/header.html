@@ -20,12 +20,18 @@
     <nav class="hidden lg:flex items-center gap-6">
       <a href="/" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors">الرئيسية</a>
 
-      <!-- Explore Dropdown -->
-      <div class="relative" @mouseleave="openExplore = false">
-        <button @click="openExplore = !openExplore" @mouseenter="openExplore = true" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors flex items-center gap-1">
+      <!-- Explore Dropdown: one hover zone (button + bridge + panel) so the menu does not close in the gap -->
+      <div class="relative"
+           @mouseenter="openExplore = true"
+           @mouseleave="openExplore = false">
+        <button type="button" @click.prevent="openExplore = !openExplore" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors flex items-center gap-1">
           استكشف <span class="text-[8px]">▼</span>
         </button>
-        <div x-show="openExplore" x-transition class="absolute top-full left-0 mt-2 w-56 bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-3 shadow-2xl">
+        <div x-show="openExplore"
+             x-transition
+             x-cloak
+             class="absolute top-full left-0 z-[60] pt-2 w-56">
+          <div class="bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-3 shadow-2xl">
           <a href="/mods/" class="block px-4 py-2 rounded-lg text-sm text-gray-300 hover:bg-moroccangreen/20 hover:text-white transition-all">🎮 المودات</a>
           <a href="/flowinventory/" class="block px-4 py-2 rounded-lg text-sm text-gray-300 hover:bg-moroccangreen/20 hover:text-white transition-all">⭐ FlowInventory</a>
           <a href="/news/" class="block px-4 py-2 rounded-lg text-sm text-gray-300 hover:bg-moroccangreen/20 hover:text-white transition-all">📰 الأخبار</a>
@@ -35,15 +41,22 @@
           <a href="/wall-of-fame/" class="block px-4 py-2 rounded-lg text-sm text-gray-300 hover:bg-moroccangreen/20 hover:text-white transition-all">🏆 جدار الشرف</a>
           <a href="/timeline/" class="block px-4 py-2 rounded-lg text-sm text-gray-300 hover:bg-moroccangreen/20 hover:text-white transition-all">📅 الخط الزمني</a>
           <a href="/sponsors/" class="block px-4 py-2 rounded-lg text-sm text-gray-300 hover:bg-moroccangreen/20 hover:text-white transition-all">🤝 الرعاة والشركاء</a>
+          </div>
         </div>
       </div>
 
       <!-- Tools Dropdown -->
-      <div class="relative" @mouseleave="openTools = false">
-        <button @click="openTools = !openTools" @mouseenter="openTools = true" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors flex items-center gap-1">
+      <div class="relative"
+           @mouseenter="openTools = true"
+           @mouseleave="openTools = false">
+        <button type="button" @click.prevent="openTools = !openTools" class="text-xs font-black text-gray-400 hover:text-white uppercase tracking-widest transition-colors flex items-center gap-1">
           أدوات <span class="text-[8px]">▼</span>
         </button>
-        <div x-show="openTools" x-transition class="absolute top-full left-0 mt-2 w-56 bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-3 shadow-2xl">
+        <div x-show="openTools"
+             x-transition
+             x-cloak
+             class="absolute top-full left-0 z-[60] pt-2 w-56">
+          <div class="bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-3 shadow-2xl">
           <a href="/tools/" class="block px-4 py-2 rounded-lg text-sm text-gray-300 hover:bg-moroccangreen/20 hover:text-white transition-all">🛠️ كل الأدوات</a>
           <a href="/downloads/" class="block px-4 py-2 rounded-lg text-sm text-gray-300 hover:bg-moroccangreen/20 hover:text-white transition-all">⬇ تحميل Minecraft</a>
           <a href="/nether-converter/" class="block px-4 py-2 rounded-lg text-sm text-gray-300 hover:bg-moroccangreen/20 hover:text-white transition-all">🔄 محول Nether</a>
@@ -52,6 +65,7 @@
           <a href="/tutorials/" class="block px-4 py-2 rounded-lg text-sm text-gray-300 hover:bg-moroccangreen/20 hover:text-white transition-all">📚 مكتبة الشروحات</a>
           <a href="/glossary/" class="block px-4 py-2 rounded-lg text-sm text-gray-300 hover:bg-moroccangreen/20 hover:text-white transition-all">📖 قاموس Minecraft</a>
           <a href="/faq/" class="block px-4 py-2 rounded-lg text-sm text-gray-300 hover:bg-moroccangreen/20 hover:text-white transition-all">❓ أسئلة شائعة</a>
+          </div>
         </div>
       </div>
 
