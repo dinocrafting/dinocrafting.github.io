@@ -1,13 +1,13 @@
 {
   "stats_version": "2.1.0",
   "health": {
-    "generated_at": "2026-05-09T10:00:27.059Z",
+    "generated_at": "2026-05-09T11:15:12.027Z",
     "next_refresh_minutes": 30,
     "stale_after_minutes": 90,
     "age_minutes": 0,
     "is_stale": false
   },
-  "generated_at": "2026-05-09T10:00:27.059Z",
+  "generated_at": "2026-05-09T11:15:12.027Z",
   "sources": {
     "youtube_badges": "live",
     "youtube_feed": "live",
