@@ -1,16 +1,16 @@
 {
   "stats_version": "2.1.0",
   "health": {
-    "generated_at": "2026-05-12T04:52:34.593Z",
+    "generated_at": "2026-05-12T07:36:06.335Z",
     "next_refresh_minutes": 30,
     "stale_after_minutes": 90,
     "age_minutes": 0,
     "is_stale": false
   },
-  "generated_at": "2026-05-12T04:52:34.593Z",
+  "generated_at": "2026-05-12T07:36:06.335Z",
   "sources": {
     "youtube_badges": "live",
-    "youtube_feed": "unavailable",
+    "youtube_feed": "live",
     "discord_widget": "unavailable",
     "modrinth_api": "live",
     "blogger_feed": "live"
@@ -18,7 +18,13 @@
   "youtube": {
     "subscribers": "6.6k",
     "views": "2.1M",
-    "latest_video": null
+    "latest_video": {
+      "title": "هذا المود حوّل ماينكرافت إلى لعبة مرعبة فعلاً 😱🔥  #minecraft #ماينكرافت #shorts  #ماين_كرافت",
+      "video_id": "BpsAYkvKZBI",
+      "url": "https://www.youtube.com/watch?v=BpsAYkvKZBI",
+      "thumbnail": "https://i.ytimg.com/vi/BpsAYkvKZBI/hqdefault.jpg",
+      "published_at": "2026-05-12T06:35:26+00:00"
+    }
   },
   "discord": {
     "members_online": null,
