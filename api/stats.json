@@ -1,18 +1,18 @@
 {
   "stats_version": "2.1.0",
   "health": {
-    "generated_at": "2026-05-17T12:50:22.156Z",
+    "generated_at": "2026-05-17T14:19:31.645Z",
     "next_refresh_minutes": 30,
     "stale_after_minutes": 90,
     "age_minutes": 0,
     "is_stale": false
   },
-  "generated_at": "2026-05-17T12:50:22.156Z",
+  "generated_at": "2026-05-17T14:19:31.645Z",
   "sources": {
     "youtube_badges": "live",
     "youtube_feed": "live",
     "discord_widget": "unavailable",
-    "modrinth_api": "live",
+    "modrinth_api": "unavailable",
     "blogger_feed": "live"
   },
   "youtube": {
@@ -31,8 +31,8 @@
     "members_total": null
   },
   "modrinth": {
-    "flowinventory_downloads": 21,
-    "flowinventory_followers": 2,
+    "flowinventory_downloads": null,
+    "flowinventory_followers": null,
     "status": "under_review"
   },
   "news": {
