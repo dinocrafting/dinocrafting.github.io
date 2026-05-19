@@ -1,16 +1,16 @@
 {
   "stats_version": "2.1.0",
   "health": {
-    "generated_at": "2026-05-19T06:09:14.795Z",
+    "generated_at": "2026-05-19T10:11:54.884Z",
     "next_refresh_minutes": 30,
     "stale_after_minutes": 90,
     "age_minutes": 0,
     "is_stale": false
   },
-  "generated_at": "2026-05-19T06:09:14.795Z",
+  "generated_at": "2026-05-19T10:11:54.884Z",
   "sources": {
     "youtube_badges": "live",
-    "youtube_feed": "unavailable",
+    "youtube_feed": "live",
     "discord_widget": "unavailable",
     "modrinth_api": "live",
     "blogger_feed": "live"
@@ -18,7 +18,13 @@
   "youtube": {
     "subscribers": "6.7k",
     "views": "2.2M",
-    "latest_video": null
+    "latest_video": {
+      "title": "ماين كرافت القديمة ضد الجديدة 😭 #shorts #minecraft #ماين_كرافت",
+      "video_id": "RkerMmQ8o9I",
+      "url": "https://www.youtube.com/watch?v=RkerMmQ8o9I",
+      "thumbnail": "https://i.ytimg.com/vi/RkerMmQ8o9I/hqdefault.jpg",
+      "published_at": "2026-05-18T19:02:02+00:00"
+    }
   },
   "discord": {
     "members_online": null,
