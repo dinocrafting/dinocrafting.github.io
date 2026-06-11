@@ -1,13 +1,13 @@
 {
   "stats_version": "2.1.0",
   "health": {
-    "generated_at": "2026-06-11T11:52:01.183Z",
+    "generated_at": "2026-06-11T15:28:20.631Z",
     "next_refresh_minutes": 30,
     "stale_after_minutes": 90,
     "age_minutes": 0,
     "is_stale": false
   },
-  "generated_at": "2026-06-11T11:52:01.183Z",
+  "generated_at": "2026-06-11T15:28:20.631Z",
   "sources": {
     "youtube_badges": "live",
     "youtube_feed": "live",
@@ -16,7 +16,7 @@
     "blogger_feed": "live"
   },
   "youtube": {
-    "subscribers": "6.8k",
+    "subscribers": "6.9k",
     "views": "2.3M",
     "latest_video": {
       "title": "لما يخلص أكلك في ماينكرافت 🤣#shorts #minecraft #ماين_كرافت",
