@@ -1,23 +1,23 @@
 {
   "stats_version": "2.1.0",
   "health": {
-    "generated_at": "2026-07-19T10:48:52.103Z",
+    "generated_at": "2026-07-19T11:47:08.431Z",
     "next_refresh_minutes": 30,
     "stale_after_minutes": 90,
-    "age_minutes": 0,
+    "age_minutes": 1,
     "is_stale": false
   },
-  "generated_at": "2026-07-19T10:48:52.103Z",
+  "generated_at": "2026-07-19T11:47:08.431Z",
   "sources": {
-    "youtube_badges": "live",
+    "youtube_badges": "unavailable",
     "youtube_feed": "live",
     "discord_widget": "unavailable",
     "modrinth_api": "live",
     "blogger_feed": "live"
   },
   "youtube": {
-    "subscribers": "7k",
-    "views": "2.4M",
+    "subscribers": null,
+    "views": null,
     "latest_video": {
       "title": "لما يخلص أكلك في ماينكرافت 🤣#shorts #minecraft #ماين_كرافت",
       "video_id": "4hftisDs1TU",
