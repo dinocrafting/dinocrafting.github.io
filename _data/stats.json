@@ -1,13 +1,13 @@
 {
   "stats_version": "2.1.0",
   "health": {
-    "generated_at": "2026-10-14T00:24:10.815Z",
+    "generated_at": "2026-10-14T05:05:25.179Z",
     "next_refresh_minutes": 30,
     "stale_after_minutes": 90,
     "age_minutes": 0,
     "is_stale": false
   },
-  "generated_at": "2026-10-14T00:24:10.815Z",
+  "generated_at": "2026-10-14T05:05:25.179Z",
   "sources": {
     "youtube_badges": "live",
     "youtube_feed": "unavailable",
@@ -25,7 +25,7 @@
     "members_total": null
   },
   "modrinth": {
-    "flowinventory_downloads": 174,
+    "flowinventory_downloads": 176,
     "flowinventory_followers": 2,
     "status": "under_review"
   },
